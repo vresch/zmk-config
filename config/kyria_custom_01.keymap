@@ -1,10 +1,28 @@
+// forked from "kyria_example_01.keymap"
+
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/outputs.h>
 
 #define LETTER 	0
 #define NAV   	1
 #define NUM   	2
-#define FUNC   	3
+#define FNC   	3
+
+#define PTAB LC(PG_UP)
+#define NTAB LC(PG_DN)
+#define NWIN LA(TAB)
+#define PWIN LS(LA(TAB))
+#define XSLV LA(LC(V))
+#define PDESK LC(LG(RIGHT))
+#define NDESK LC(LG(LEFT))
+#define LR_DOWN LA(DOWN)
+#define LR_UP LA(UP)
+
+&sl {
+	release-after-ms = <1000>;
+};
 
 // default_layer {
 // ---------------------------------------------------------------------------------------------------------------------------------
@@ -15,21 +33,51 @@
 
 
 / {
+		behaviors {
+    // hm: homerow_mods {
+    //   compatible = "zmk,behavior-hold-tap";
+    //   label = "HOMEROW_MODS";
+    //   #binding-cells = <2>;
+    //   tapping_term_ms = <200>;
+    //   flavor = "tap-preferred";
+    //   bindings = <&kp>, <&cp>;
+    // };
+		hm: homerow_mods {
+	    compatible = "zmk,behavior-hold-tap";
+	    label = "homerow mods";
+	    #binding-cells = <2>;
+	    tapping_term_ms = <220>;
+	    flavor = "balanced";
+	    bindings = <&kp>, <&kp>;
+	  };
+
+	  mx: layer_tap_FNC {
+			compatible = "zmk,behavior-hold-tap";
+			label = "LAYER_TAP_FNC";
+			#binding-cells = <2>;
+			flavor = "hold-preferred";
+			tapping_term_ms = <200>;
+			bindings = <&mo>, <&sl>;
+		};
+	};
+
 	keymap {
 		compatible = "zmk,keymap";
 
 		letter_layer {
 // ---------------------------------------------------------------------------------------------------------------------------------
-// |  ESC  |  Q  |  W  |  E   |  R   |  T   |                                          |  Y   |  U    |  I    |  O   |   P   |   \  |
-// |  TAB  |  A  |  S  |  D   |  F   |  G   |                                          |  H   |  J    |  K    |  L   |   ;   |   '  |
-// | SHIFT |  Z  |  X  |  C   |  V   |  B   | LBKT | GRAVE |  | L SHIFT | RBKT |  N   |  M    |  ,    |  .   |   /   | CTRL |
-//                     | GUI  | DEL  | RET  |  LT NEXT  |   ESC   |  |   RET   |  SPACE  | TAB  | BSPC  | R-ALT |
+// |  ESC  |  Q  |  W  |  E   |  R   |  T   |                                          |  Y   |  U    |  I    |  O   |   P   | bksp |
+// | TAB/FN|  A  |  S  |  D   |  F   |  G   |                                          |  H   |  J    |  K    |  L   |   ;   |ent/fn|
+// | SHIFT |  Z  |  X  |  C   |  V   |  B   | ---     |  ctrl   |  |   ctrl  |  ---    |  N   |  M    |  ,    |  .   |   /   |shft/'|
+//                     | LR_UP|Alt/En| Ctrl |  Nav    |   del   |  |   bksp  |  num    | spc  | FNC  | LGUI  |
 			bindings = <
-	&kp ESC   &kp Q &kp W &kp E &kp R &kp T                                                &kp Y &kp U  &kp I     &kp O   &kp P    &kp BSLH
-	&kp TAB   &kp A &kp S &kp D &kp F &kp G                                                &kp H &kp J  &kp K     &kp L   &kp SEMI &kp SQT
-	&kp LSHFT &kp Z &kp X &kp C &kp V &kp B &kp LBKT &kp GRAVE        &kp LSHFT &kp RBKT &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &kp RCTRL
-	                 &kp LGUI &kp DEL &kp RET &lt NAV_NUM &kp ESC        &kp RET  &kp SPACE  &kp TAB &kp BSPC &kp RALT
+	&kp ESC     &kp Q       &kp W &kp E &kp R &kp T                                            &kp Y &kp U  &kp I     &kp O   &kp P         &kp BSPC
+	&lt FNC TAB &hm LSHFT A &kp S &kp D &kp F &kp G                                            &kp H &kp J  &kp K     &kp L   &hm RSHFT SEMI &lt FNC RET
+	&kp LSHFT   &kp Z       &kp X &kp C &kp V &kp B &none   &kp LCTRL         &kp RCTRL &none  &kp N &kp M  &kp COMMA &kp DOT &kp FSLH      &mt RSHFT SQT
+	              &kp LR_UP &mt LALT RET  &kp LCTRL &mx NAV FNC &kp DEL            &kp BKSP &mo NUM &kp SPC &sl FNC &kp LGUI
 			>;
+
+			sensor-bindings = <&inc_dec_kp PG_UP PG_DN>;
 		};
 
 	num_layer {
@@ -37,12 +85,12 @@
 // | `     |  !  |  +  |  [   |  ]   |  =   |                                          |  %   |  7    |  8    |  9   |   *   | /    |
 // | #     |  @  |  _  |  (   |  )   |  -   |                                          |  $   |  4    |  5    |  6   |   +   | ---  |
 // | ~     |  \  |  &  |  {   |  }   |  |   |   ---   |  ---    |  |   ---   |  ---    |  ^   |  1    |  2    |  3   |   -   | ---  |
-//                     | ENC  | ---  | ---  |   ---   |  ---    |  |   ---   |  ---    | ---  | ---   | ---   |
+//                     | ---  | ---  |LR_DOWN|   ---   |  ---    |  |   ---   |  ---    | ---  | ---   | ---   |
 			bindings = <
 	&kp GRAVE &kp EXCL &kp PLUS  &kp LBKT &kp RBKT &kp EQUAL                             &kp CARET &kp N7 &kp N8 &kp N9 &kp KP_MULTIPLY &kp KP_DIVIDE
 	&kp HASH  &kp AT   &kp UNDER &kp LPAR &kp RPAR &kp MINUS                             &kp PRCNT &kp N4 &kp N5 &kp N6 &kp KP_PLUS &none
 	&kp TILDE &kp BSLH &kp AMPS  &kp LBRC &kp RBRC &kp PIPE &trans &trans  &trans &trans &kp DLLR  &kp N1 &kp N2 &kp N3 &kp KP_MINUS &trans
-	                       &trans  &trans   &trans          &trans &trans  &trans &trans    &kp N0  &kp DOT    &trans
+	                       &trans  &trans   &kp LR_DOWN          &trans &trans  &trans &trans    &kp N0  &kp DOT    &trans
 			>;
 		};
 
@@ -58,6 +106,8 @@
 	&trans &trans   &kp F2    &kp F3   &kp F5    &kp XSLV &trans &trans  &trans &trans &trans   &kp NDESK &trans   &kp PDESK &trans &trans
 	                       &trans  &trans   &trans        &trans &trans  &trans &trans    &trans    &none     &trans
 			>;
+
+			sensor-bindings = <&inc_dec_kp LC(LEFT) LC(RIGHT)>;
 		};
 
 	function_layer {
