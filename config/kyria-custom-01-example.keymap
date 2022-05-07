@@ -1,0 +1,129 @@
+// forked from "kyria_example_01.keymap"
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/outputs.h>
+
+#define LETTER 	0
+#define NAV   	1
+#define NUM   	2
+#define FNC   	3
+
+#define PTAB LC(PG_UP)
+#define NTAB LC(PG_DN)
+#define NWIN LA(TAB)
+#define PWIN LS(LA(TAB))
+#define XSLV LA(LC(V))
+#define PDESK LC(LG(RIGHT))
+#define NDESK LC(LG(LEFT))
+#define LR_DOWN LA(DOWN)
+#define LR_UP LA(UP)
+
+&sl {
+	release-after-ms = <1000>;
+};
+
+// default_layer {
+// ---------------------------------------------------------------------------------------------------------------------------------
+// |  ESC  |  Q  |  W  |  E   |  R   |  T   |                                          |  Y   |  U    |  I    |  O   |   P   |   \  |
+// |  TAB  |  A  |  S  |  D   |  F   |  G   |                                          |  H   |  J    |  K    |  L   |   ;   |   '  |
+// | SHIFT |  Z  |  X  |  C   |  V   |  B   | L SHIFT | L SHIFT |  | L SHIFT | L SHIFT |  N   |  M    |  ,    |  .   |   /   | CTRL |
+//                     | GUI  | DEL  | RET  |  SPACE  |   ESC   |  |   RET   |  SPACE  | TAB  | BSPC  | R-ALT |
+
+
+/ {
+		behaviors {
+    // hm: homerow_mods {
+    //   compatible = "zmk,behavior-hold-tap";
+    //   label = "HOMEROW_MODS";
+    //   #binding-cells = <2>;
+    //   tapping_term_ms = <200>;
+    //   flavor = "tap-preferred";
+    //   bindings = <&kp>, <&cp>;
+    // };
+		hm: homerow_mods {
+	    compatible = "zmk,behavior-hold-tap";
+	    label = "homerow mods";
+	    #binding-cells = <2>;
+	    tapping_term_ms = <220>;
+	    flavor = "balanced";
+	    bindings = <&kp>, <&kp>;
+	  };
+
+	  mx: layer_tap_FNC {
+			compatible = "zmk,behavior-hold-tap";
+			label = "LAYER_TAP_FNC";
+			#binding-cells = <2>;
+			flavor = "hold-preferred";
+			tapping_term_ms = <200>;
+			bindings = <&mo>, <&sl>;
+		};
+	};
+
+	keymap {
+		compatible = "zmk,keymap";
+
+		letter_layer {
+			// ---------------------------------------------------------------------------------------------------------------------------------
+			// |  ESC  |  Q  |  W  |  E   |  R   |  T   |                                          |  Y   |  U    |  I    |  O   |   P   | bksp |
+			// | TAB/FN|  A  |  S  |  D   |  F   |  G   |                                          |  H   |  J    |  K    |  L   |   ;   |ent/fn|
+			// | SHIFT |  Z  |  X  |  C   |  V   |  B   | ---     |  ctrl   |  |   ctrl  |  ---    |  N   |  M    |  ,    |  .   |   /   |shft/'|
+			//                     | LR_UP|Alt/En| Ctrl |  Nav    |   del   |  |   bksp  |  num    | spc  | FNC  | LGUI  |
+			bindings = <
+				&kp ESC     &kp Q       &kp W &kp E &kp R &kp T                                            &kp Y &kp U  &kp I     &kp O   &kp P         &kp BSPC
+				&lt FNC TAB &hm LSHFT A &kp S &kp D &kp F &kp G                                            &kp H &kp J  &kp K     &kp L   &hm RSHFT SEMI &lt FNC RET
+				&kp LSHFT   &kp Z       &kp X &kp C &kp V &kp B &none   &kp LCTRL         &kp RCTRL &none  &kp N &kp M  &kp COMMA &kp DOT &kp FSLH      &mt RSHFT SQT
+											&kp LR_UP &mt LALT RET  &kp LCTRL &mx NAV FNC &kp DEL            &kp BKSP &mo NUM &kp SPC &sl FNC &kp LGUI
+			>;
+
+			sensor-bindings = <&inc_dec_kp PG_UP PG_DN>;
+		};
+
+		num_layer {
+			// ---------------------------------------------------------------------------------------------------------------------------------
+			// | `     |  !  |  +  |  [   |  ]   |  =   |                                          |  %   |  7    |  8    |  9   |   *   | /    |
+			// | #     |  @  |  _  |  (   |  )   |  -   |                                          |  $   |  4    |  5    |  6   |   +   | ---  |
+			// | ~     |  \  |  &  |  {   |  }   |  |   |   ---   |  ---    |  |   ---   |  ---    |  ^   |  1    |  2    |  3   |   -   | ---  |
+			//                     | ---  | ---  |LR_DOWN|   ---   |  ---    |  |   ---   |  ---    | ---  | ---   | ---   |
+						bindings = <
+				&kp GRAVE &kp EXCL &kp PLUS  &kp LBKT &kp RBKT &kp EQUAL                             &kp CARET &kp N7 &kp N8 &kp N9 &kp KP_MULTIPLY &kp KP_DIVIDE
+				&kp HASH  &kp AT   &kp UNDER &kp LPAR &kp RPAR &kp MINUS                             &kp PRCNT &kp N4 &kp N5 &kp N6 &kp KP_PLUS &none
+				&kp TILDE &kp BSLH &kp AMPS  &kp LBRC &kp RBRC &kp PIPE &trans &trans  &trans &trans &kp DLLR  &kp N1 &kp N2 &kp N3 &kp KP_MINUS &trans
+															&trans  &trans   &kp LR_DOWN          &trans &trans  &trans &trans    &kp N0  &kp DOT    &trans
+						>;
+		};
+
+		nav_layer {
+			// ---------------------------------------------------------------------------------------------------------------------------------
+			// | ---  | Tab-| Tab+| win+ | win- | excel|                                          | Pgup | Home |  Up   | End  | ScrUp | ---  |
+			// | ---  | Win | Shft| alt  | ctrl | app  |                                          | Pgdw | Left |  Down | Right| ScrDn | ---  |
+			// | ---  | --- | F2  | F3   | F5   | excel|   ---   |  ---    |  |   ---   |  ---    |      | Predk| ---   | NxDk |   -   |---   |
+			//                    | ENC  | ---  | ---  |   ---   |  ---    |  |   ---   |  ---    | ---  | ---  | ---   |
+						bindings = <
+				&trans &kp PTAB &kp NTAB  &kp PWIN &kp NWIN  &trans                                &kp PG_UP &kp HOME &kp UP   &kp END   &kp K_SCROLL_UP &trans
+				&trans &kp LGUI &kp LSHFT &kp LALT &kp LCTRL &kp K_APP                             &kp PG_DN &kp LEFT &kp DOWN &kp RIGHT &kp K_SCROLL_DOWN &trans
+				&trans &trans   &kp F2    &kp F3   &kp F5    &kp XSLV &trans &trans  &trans &trans &trans   &kp NDESK &trans   &kp PDESK &trans &trans
+															&trans  &trans   &trans        &trans &trans  &trans &trans    &trans    &none     &trans
+						>;
+
+				sensor-bindings = <&inc_dec_kp LC(LEFT) LC(RIGHT)>;
+		};
+
+		function_layer {
+			// ---------------------------------------------------------------------------------------------------------------------------------
+			// | none  |  F2 | mute| V+   | stp  |   @  |                                       | F12  |  F7   |  F8   |  F9  | Print| none |
+			// | none  | caps| Prev| V-   | Next |   @p |                                       | F11  |  F4   |  F5   |  F6  | Ins  | none |
+			// | none  | /Ble| Ble0| Ble1 | Ble2 | Ble3 |  Ble4  |  ---    |  |   ---   |  ---  | F10  |  F1   |  F2   |  F3  | ---  | none |
+			//                     | ---  | ---  | ---  |  ---   |  ---    |  |   ---   |  ---  | ---  | ---   | ---   |
+						bindings = <
+				&trans &kp F2     &kp C_MUTE   &kp C_VOL_UP &kp C_STOP   &none                                                &kp F12 &kp F7 &kp F8 &kp F9 &kp PSCRN &trans
+				&trans &kp CAPS   &kp C_PREV   &kp C_VOL_DN &kp C_NEXT   &none                                                &kp F11 &kp F4 &kp F5 &kp F6 &kp INS  &trans
+				&trans &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &out OUT_TOG  &none  &none &kp F10 &kp F1 &kp F2 &kp F3 &trans   &trans
+																&trans        &trans        &trans           &trans       &trans        &trans &trans &trans &trans &trans
+						>;
+
+				sensor-bindings = <&inc_dec_cp C_VOL_DN C_VOL_UP>;
+		};
+	};
+};
