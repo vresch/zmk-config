@@ -54,8 +54,8 @@
 			#binding-cells = <2>;
 			flavor = "hold-preferred";
 			tapping_term_ms = <200>;
-			bindings = <$mt>, <&to>;
-		}
+			bindings = <&mt>, <&to>;
+		};
 	};
 
 	keymap {
