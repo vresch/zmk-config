@@ -107,7 +107,7 @@
 				&trans &trans 	&trans 		&kp PWIN &kp NWIN  &trans                               &kp PG_UP &kp HOME 	&kp UP   &kp END   &kp K_SCROLL_UP 		&trans
 				&trans &kp PTAB &kp NTAB 	&kp LALT &kp LSHFT &kp K_APP                            &kp PG_DN &kp LEFT 	&kp DOWN &kp RIGHT &kp K_SCROLL_DOWN 	&trans
 				&trans &trans   &kp F2    &kp F3   &kp F5    &trans &trans &trans  &trans &trans 	&trans   	&kp NDESK &trans   &kp PDESK &trans 						&trans
-															&trans  &trans   &kp LCMD     &trans &trans  &trans &INS 		&lc RCMD 0    &trans     &trans
+															&trans  &trans   &kp LCMD     &trans &trans  &trans &kp INS 		&lc RCMD 0    &trans     &trans
 			>;
 		};
 
