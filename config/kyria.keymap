@@ -50,7 +50,16 @@
 			bindings = <&mo>, <&sl>;
 		};
 
-		lc: layer_tap_ctrl_hold {
+		ld: layer_tap {
+			compatible = "zmk,behavior-hold-tap";
+			label = "LAYER_TAP_CTRL_HOLD";
+			#binding-cells = <2>;
+			flavor = "hold-preferred";
+			tapping_term_ms = <200>;
+			bindings = <&kp>, <&to>;
+		};
+
+		lc: layer_tap_thr {
 			compatible = "zmk,behavior-hold-tap";
 			label = "LAYER_TAP_CTRL_HOLD";
 			#binding-cells = <3>;
@@ -81,7 +90,7 @@
 				&gresc   		&kp Q &kp W &kp E &kp R 				&kp T                                         &kp Y &kp U  					&kp I			&kp O		&kp P    &kp SQT
 				&kp LBKT 		&kp A &kp S &kp D &hm LSHIFT F 	&kp G                                         &kp H &hm RSHFT J			&kp K			&kp L		&kp SEMI &kp RBKT
 				&kp TAB   	&kp Z &kp X &kp C &kp V 				&kp B &kp LANG	&kp CAPS    &kp RCTRL &none  	&kp N &kp M  					&kp COMMA &kp DOT &kp FSLH &kp GRAVE
-							&hm LGUI COMMA &kp LALT 	&lc LCTRL 1	&kp RET	&kp LPAR	&kp RPAR	&kp BSPC &hm RCTRL SPACE &kp RALT	&kp DOT
+							&hm LGUI COMMA &kp LALT 	&ld LCTRL 1	&kp RET	&kp LPAR	&kp RPAR	&kp BSPC &hm RCTRL SPACE &kp RALT	&kp DOT
 			>;
 		};
 
@@ -95,7 +104,7 @@
 				&trans 		&kp FSLH 	&kp STAR  &kp MINUS &kp PLUS 		&kp PIPE                             		&kp F12 &kp N7 &kp N8 &kp N9 &trans &trans
 				&trans  	&kp HASH	&kp DLLR 	&kp AT 		&kp EXCL 		&kp UNDER                             	&kp F11	&kp N4 &kp N5 &kp N6 &kp N0 &trans
 				&trans 		&kp BSLH 	&kp CARET &kp AMPS 	&kp PRCNT 	&trans 		&trans &trans 	&trans &trans &kp F10 &kp N1 &kp N2 &kp N3 &trans &trans
-														&trans  	&kp EQUAL &lc LCTRL 0 2 &trans 	&trans &trans 	&trans &trans &lc RCTRL 0 &trans &trans
+														&trans  	&kp EQUAL &lc LCTRL 0 2 &trans 	&trans &trans 	&trans &trans &ld RCTRL 0 &trans &trans
 			>;
 		};
 
@@ -109,7 +118,7 @@
 				&trans &trans 	&trans 		&kp PTAB &kp NTAB  &trans                               &kp PG_UP &kp HOME 	&kp UP   &kp END   &kp K_SCROLL_UP 		&trans
 				&trans &kp PWIN &kp NWIN 	&kp LALT &kp LSHFT &kp K_APP                            &kp PG_DN &kp LEFT 	&kp DOWN &kp RIGHT &kp K_SCROLL_DOWN 	&trans
 				&trans &trans   &kp F2    &kp F3   &kp F5    &trans	&trans	&trans  &trans &trans 	&trans   	&kp PDKT &trans   &kp NDKT &trans 						&trans
-													&kp LGUI  &kp LALT   &kp LCTRL 		&trans 	&trans  &trans &trans 		&lc RCTRL 0    &trans     &trans
+													&kp LGUI  &kp LALT   &kp LCTRL 		&trans 	&trans  &trans &trans 		&ld RCTRL 0    &trans     &trans
 			>;
 		};
 
