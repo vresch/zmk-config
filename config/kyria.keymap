@@ -31,15 +31,15 @@
     //   bindings = <&kp>, <&cp>;
     // };
 		hm: homerow_mods {
-	    compatible = "zmk,behavior-hold-tap";
-	    label = "homerow mods";
-	    #binding-cells = <2>;
-	    tapping_term_ms = <220>;
-	    flavor = "balanced";
-	    bindings = <&kp>, <&kp>;
-	  };
+			compatible = "zmk,behavior-hold-tap";
+			label = "homerow mods";
+			#binding-cells = <2>;
+			tapping_term_ms = <220>;
+			flavor = "balanced";
+			bindings = <&kp>, <&kp>;
+		};
 
-	  mx: layer_tap_FNC {
+		mx: layer_tap_FNC {
 			compatible = "zmk,behavior-hold-tap";
 			label = "LAYER_TAP_FNC";
 			#binding-cells = <2>;
@@ -74,12 +74,12 @@
 			// | Esc/~ |  Q  |  W  |  E   |  R   |  T   |                                          |  Y   |  U    |  I    |  O   |   P   |  '   |
 			// | [     |  A  |  S  |  D   | F/Sht|  G   |                                          |  H   | J/Sht |  K    |  L   |   ;   |  ]   |
 			// | Tab   |  Z  |  X  |  C   |  V   |  B   |  Lang   |  Cmd    |  |   Cmd   |  ---    |  N   |  M    |  ,    |  .   |   /   |  `   |
-			//                     |  ,   | ?/Alt|L1/Cmd|  Ret    |   (     |  |   )     |  Bspc   | Spc  | Del/Alt |  .    |
+			//                     |  ,   |Cp/Alt|L1/Cmd|  Ret    |   (     |  |   )     |  Bspc   | Spc  |Del/Alt|  .    |
 			bindings = <
 				&kp gresc   &kp Q &kp W &kp E &kp R 				&kp T                                         &kp Y &kp U  					&kp I			&kp O		&kp P    &kp SQT
 				&kp LBKT 		&kp A &kp S &kp D &hm LSHIFT F 	&kp G                                         &kp H &hm RSHFT J			&kp K			&kp L		&kp SEMI &kp RBKT
 				&kp TAB   	&kp Z &kp X &kp C &kp V 				&kp B &kp LANG	&kp LCMD    &kp RCMD &none  	&kp N &kp M  					&kp COMMA &kp DOT &kp FSLH &kp GRAVE
-										&kp COMMA 	&mt LALT CAPS	&lc LCMD 1	&kp RET		&kp LPAR    &kp RPAR &kp BSPC &kp SPC &mt RALT DEL 	&kp DOT
+										&kp COMMA 	&mt LALT CAPS	&lc LCMD 1	&kp RET		&kp LPAR    &kp RPAR &kp BSPC &kp SPACE &mt RALT DEL 	&kp DOT
 			>;
 		};
 
