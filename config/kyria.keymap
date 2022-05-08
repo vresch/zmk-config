@@ -76,7 +76,7 @@
 			// | Tab   |  Z  |  X  |  C   |  V   |  B   |  Lang   |  Cmd    |  |   Cmd   |  ---    |  N   |  M    |  ,    |  .   |   /   |  `   |
 			//                     |  ,   |Cp/Alt|L1/Cmd|  Ret    |   (     |  |   )     |  Bspc   | Spc  |Del/Alt|  .    |
 			bindings = <
-				&kp gresc   &kp Q &kp W &kp E &kp R 				&kp T                                         &kp Y &kp U  					&kp I			&kp O		&kp P    &kp SQT
+				&gresc   		&kp Q &kp W &kp E &kp R 				&kp T                                         &kp Y &kp U  					&kp I			&kp O		&kp P    &kp SQT
 				&kp LBKT 		&kp A &kp S &kp D &hm LSHIFT F 	&kp G                                         &kp H &hm RSHFT J			&kp K			&kp L		&kp SEMI &kp RBKT
 				&kp TAB   	&kp Z &kp X &kp C &kp V 				&kp B &kp LANG	&kp LCMD    &kp RCMD &none  	&kp N &kp M  					&kp COMMA &kp DOT &kp FSLH &kp GRAVE
 										&kp COMMA 	&mt LALT CAPS	&lc LCMD 1	&kp RET		&kp LPAR    &kp RPAR &kp BSPC &kp SPACE &mt RALT DEL 	&kp DOT
