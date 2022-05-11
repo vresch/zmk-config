@@ -3,20 +3,32 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
 
+// Layers
 #define LLTR	0
 #define LNBR	1
 #define LNAV	2
 #define LFUN	3
 
-//MacOS shortcuts
-#define NTAB LC(TAB)
-#define PTAB LC(LS(TAB))
-#define NWIN LG(TAB)
-#define PWIN LG(LS(TAB))
+//GUI nav MacOS
+#define NTAB LG(TAB)
+#define PTAB LG(LS(TAB))
+#define NWIN LC(TAB)
+#define PWIN LC(LS(TAB))
 #define PDKT LG(LEFT)
 #define NDKT LG(RIGHT)
-
+//switch input source
 #define LANG LC(SPACE)
+
+//cut copy paste
+#define CUT LC(X)
+#define COPY LC(C)
+#define PASTE LC(V)
+
+//undo redo
+#define UNDO LC(Z)
+#define REDO LC(LS(Z))
+
+//find, select all?, F5(reload/debug)
 
 &sl {
 	release-after-ms = <1000>;
@@ -66,6 +78,14 @@
 			bindings = <&kp ESC>, <&kp GRAVE>;
 			mods = <(MOD_LGUI|MOD_LSFT|MOD_RGUI|MOD_RSFT)>;
 		};
+
+		sm: shift_mod {
+			compatible = "zmk,behavior-mod-morph";
+			label = "SHIFT_MOD";
+			#binding-cells = <2>;
+			bindings = <&kp>, <&kp>;
+			mods = <(MOD_LSFT|MOD_RSFT)>;
+		};
 	};
 
 	keymap {
@@ -73,29 +93,29 @@
 
 		letter_layer {
 			// ---------------------------------------------------------------------------------------------------------------------------------
-			// | Esc/~ |  Q  |  W  |  E   |  R   |  T    |                                          |  Y    |  U    |  I    |  O   |   P   |  '   |
-			// | [     |  A  |  S  |  D   | F/Shf|  G    |                                          |  H    | J/Shf |  K    |  L   |   ;   |  ]   |
-			// | Tab   |  Z  |  X  |  C   |  V   |  B    |  Lang   |  CAPS   |  |   Ctr   |  Ins    |  N    |  M    |  ,    |  .   |   /   |  `   |
-			//                     |,/Cmd | Alt  |L1/Ctr |  Ret    |   (     |  |   )     |  Bspc   |Spc/Ctr| Alt   |  .    |
+			// | Esc/` |  Q  |  W  |  E   |  R   |  T    |                                          |  Y    |  U    |  I    |  O   |   P   | '/"  |
+			// | [/<   |  A  |  S  |  D   | F/Shf|  G    |                                          |  H    | J/Shf |  K    |  L   |  ;/:  | ]/>  |
+			// | Tab   |  Z  |  X  |  C   |  V   |  B    |  Lang   |  CAPS   |  |   Ctr   |  Ins    |  N    |  M    |  ,    |  .   |  -/_  | `/~  |
+			//                     |,/Gui | =/Alt|L1/Ctr |  Ret    |  (/{    |  |   )/}   | Bsp/Del |Spc/Ctr| Alt   |  ./?  |
 			bindings = <
-				&gresc   		&kp Q &kp W &kp E &kp R 				&kp T                                         &kp Y &kp U  			&kp I			&kp O		&kp P    &kp SQT
-				&kp LBKT 		&kp A &kp S &kp D &hm LSHFT F 	&kp G                                         &kp H &hm RSHFT J	&kp K			&kp L		&kp SEMI &kp RBKT
-				&kp TAB   	&kp Z &kp X &kp C &kp V 				&kp B 	&kp LANG	&kp CAPS  &kp RCTRL &kp INS	&kp N &kp M  			&kp COMMA &kp DOT &kp FSLH &kp GRAVE
-												&hm LGUI COMMA &kp LALT &lc LCTRL 1	&kp RET		&kp LPAR	&kp RPAR	&kp BSPC &hm RCTRL SPACE &kp RALT	&kp DOT
+				&gresc   		&kp Q &kp W &kp E &kp R 					&kp T           		                              							&kp Y &kp U  			&kp I			&kp O		&kp P   	&kp SQT
+				&sm LBKT LT &kp A &kp S &kp D &hm LSHFT F 		&kp G       		                                  							&kp H &hm RSHFT J	&kp K			&kp L		&kp SEMI	&sm RBKT GT
+				&kp TAB   	&kp Z &kp X &kp C &kp V 					&kp B 			&kp LANG	&kp CAPS  		&kp RCTRL 		&kp INS				&kp N &kp M  			&kp COMMA &kp DOT &kp MINUS	&kp GRAVE
+												&hm LGUI COMMA &hm LALT EQUAL &lc LCTRL 1	&kp RET		&sm LPAR LBRC	&sm RPAR RBRC	&sm BSPC DEL	&hm RCTRL SPACE &kp RALT	&sm DOT QMARK
 			>;
 		};
 
 		num_layer {
 			// ---------------------------------------------------------------------------------------------------------------------------------
-			// |  ---  |  /  |  *  |  -   |  +   |  |    |                                          | F12   |  7    |  8    |  9   |  ---  | ---  |
-			// |  ---  |  #  |  $  |  @   |!/Shf |  _    |                                          | F11   | 4/Shf |  5    |  6   |   0   | ---  |
-			// |  ---  |  \  |  ^  |  &   |  %   | ---   |   ---   |  ---    |  |   ---   |  ---    | F10   |  1    |  2    |  3   |  ---  | ---  |
+			// |  ---  |  ^  |  #  |  \   |  +   |  *    |                                          | F12   |  7    |  8    |  9   |   |   | ---  |
+			// |  ---  |  &  |  $  |  @   |!/Shf |  /    |                                          | F11   | 4/Shf |  5    |  6   |   0   | ---  |
+			// |  ---  | --- | --- | ---  | ---  |  %    |   ---   |  ---    |  |   ---   |  ---    | F10   |  1    |  2    |  3   |  ---  | ---  |
 			//                     | ---  |  =   |L2/Ctr |   ---   |  ---    |  |   ---   |  ---    |L0/Ctr | ---   | ---   |
 			bindings = <
-				&trans	&kp FSLH 	&kp STAR  &kp MINUS &kp PLUS 				&kp PIPE                             		&kp F12 &kp N7 				&kp N8 &kp N9 &trans &trans
-				&trans	&kp HASH	&kp DLLR 	&kp AT 		&hm LSHFT EXCL 	&kp UNDER                             	&kp F11	&hm RSHFT N4	&kp N5 &kp N6 &kp N0 &trans
-				&trans	&kp BSLH 	&kp CARET &kp AMPS 	&kp PRCNT 			&trans	&trans 	&trans	&trans	&trans	&kp F10 &kp N1 				&kp N2 &kp N3 &trans &trans
-																		&trans  	&kp EQUAL &lc LCTRL 2 	&trans	&trans 	&trans	&trans	&lc RCTRL 0 &trans &trans
+				&trans	&kp CARET	&kp HASH  &kp BSLH	&kp PLUS 				&kp STAR                             			&kp F12 &kp N7 				&kp N8 &kp N9 &kp PIPE &trans
+				&trans	&kp AMPS	&kp DLLR 	&kp AT 		&hm LSHFT EXCL 	&kp FSLH                           				&kp F11	&hm RSHFT N4	&kp N5 &kp N6 &kp N0 &trans
+				&trans	&trans		&trans		&trans		&trans 					&kp PRCNT	&trans 	&trans	&trans	&trans	&kp F10 &kp N1 				&kp N2 &kp N3 &trans &trans
+																		&trans  	&trans		&lc LCTRL 2 		&trans	&trans 	&trans	&trans	&lc RCTRL 0 &trans &trans
 			>;
 		};
 
@@ -103,13 +123,13 @@
 			// ---------------------------------------------------------------------------------------------------------------------------------
 			// | ---  | --- | --- | Tab- | Tab+ | Vol+  |                                          | Pgup  | Home |  Up   | End  |  ---  | ---  |
 			// | ---  | Win-| Win+| Alt  | Shf  | Vol-  |                                          | Pgdw  | Left |  Down | Right|  ---  | ---  |
-			// | ---  | --- | F2  | F3   | F5   | Mute  |   ---   |  ---    |  |   ---   |  ---    |       | Dkt- | ---   | Dkt+ |  ---  | ---  |
-			//                    | Cmd  | Alt  | Ctr   |   ---   |  ---    |  |   ---   |  ---    |L0/Ctr | ---  | ---   |
+			// | ---  | --- | --- | ---  | ---  | Mute  |  Play   |  App    |  |   ---   |  ---    |       | Dkt- | ---   | Dkt+ |  ---  | ---  |
+			//                    | Gui  | Alt  | Ctr   |   ---   |  ---    |  |   ---   |  ---    |L0/Ctr | ---  | ---   |
 			bindings = <
-				&trans &trans 	&trans 		&kp PTAB &kp NTAB  &kp C_VOL_UP                       					&kp PG_UP &kp HOME 	&kp UP   &kp END   	&trans	&trans
-				&trans &kp PWIN &kp NWIN 	&kp LALT &kp LSHFT &kp C_VOL_DN                        					&kp PG_DN &kp LEFT 	&kp DOWN &kp RIGHT 	&trans	&trans
-				&trans &trans   &kp F2    &kp F3   &kp F5    &kp C_MUTE		&trans	&trans	&trans	&trans 	&trans   	&kp PDKT 	&trans   &kp NDKT		&trans	&trans
-																	&kp LGUI  &kp LALT   &kp LCTRL 	&trans 	&trans  &trans	&trans	&lc RCTRL 0	&trans	&trans
+				&trans &trans 	&trans 		&kp PTAB &kp NTAB  &kp C_VOL_UP                       							&kp PG_UP &kp HOME 	&kp UP   &kp END   	&trans	&trans
+				&trans &kp PWIN &kp NWIN 	&kp LALT &kp LSHFT &kp C_VOL_DN                        							&kp PG_DN &kp LEFT 	&kp DOWN &kp RIGHT 	&trans	&trans
+				&trans &trans   &trans    &trans   &trans    &kp C_MUTE		&kp C_PP	&kp K_APP	&trans	&trans 	&trans   	&kp PDKT 	&trans   &kp NDKT		&trans	&trans
+																	&kp LGUI  &kp LALT   &kp LCTRL 	&trans 		&trans  	&trans	&trans	&lc RCTRL 0	&trans	&trans
 			>;
 		};
 
