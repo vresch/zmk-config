@@ -113,15 +113,15 @@
 
 		nav_layer {
 			// ---------------------------------------------------------------------------------------------------------------------------------
-			// | ---  | --- | Cpy | Tab- | Tab+ | Vol+  |                                          | Pgup  | Home |  Up   | End  |  ---  | ---  |
+			// | ---  | --- | --- | Tab- | Tab+ | Vol+  |                                          | Pgup  | Home |  Up   | End  |  ---  | ---  |
 			// | ---  | Win-| Win+| Alt  | Shf  | Vol-  |                                          | Pgdw  | Left |  Down | Right|  ---  | ---  |
-			// | ---  | --- | --- | ---  | ---  | Mute  |  Play   |  App    |  |   ---   |  ---    | none  | Dkt- |  none | Dkt+ |  ---  | ---  |
+			// | --- 	| /Ble| --- | Ble+ | Ble0 | Mute  |  Play   |  App    |  |   ---   |  ---    | none  | Dkt- |  none | Dkt+ |  ---  | ---  |
 			//                    | Gui  | Alt  | Ctr   |   ---   |  ---    |  |   ---   |  ---    |L0/Ctr | Alt  | Gui   |
 			bindings = <
-				&trans &trans 	&kp C_AC_COPY &kp PTAB &kp NTAB  &kp C_VOL_UP                       							&kp PG_UP &kp HOME 	&kp UP   	&kp END   	&trans	&trans
-				&trans &kp PWIN &kp NWIN 			&kp LALT &kp LSHFT &kp C_VOL_DN                        							&kp PG_DN &kp LEFT 	&kp DOWN 	&kp RIGHT 	&trans	&trans
-				&trans &trans   &trans    		&trans   &trans    &kp C_MUTE		&kp C_PP	&kp K_APP	&trans	&trans 	&none   	&kp PDKT 	&none			&kp NDKT		&trans	&trans
-																			&kp LGUI  &kp LALT   &kp LCTRL 	&trans 		&trans  	&trans	&trans	&lc RCTRL 0	&kp RALT	&kp RGUI
+				&trans 	&trans 			&trans		&kp PTAB 		&kp NTAB  			&kp C_VOL_UP                       								&kp PG_UP &kp HOME 	&kp UP   	&kp END   	&trans	&trans
+				&trans 	&kp PWIN 		&kp NWIN 	&kp LALT 		&kp LSHFT	 			&kp C_VOL_DN                        							&kp PG_DN &kp LEFT 	&kp DOWN 	&kp RIGHT 	&trans	&trans
+				&trans	&bt BT_CLR	&trans    &bt BT_NXT	&bt BT_SEL 0    &kp C_MUTE		&kp C_PP	&kp K_APP	&trans	&trans 	&none   	&kp PDKT 	&none			&kp NDKT		&trans	&trans
+																			&kp LGUI  &kp LALT   &kp LCTRL 	&trans 		&trans  	&trans		&trans	&lc RCTRL 0	&kp RALT	&kp RGUI
 			>;
 		};
 

@@ -16,10 +16,16 @@ Layers switched by tap.
 bash -c "$(curl -fsSL https://zmk.dev/setup.sh)"
 ```
 
-2. Make changes
+2. Modify & save "kyria.keymap"
 3. Push to remote repo
-4. Download flash u2 file after automatically built on GitHub Action
-5. Reset the keyboard (splits)
+```
+git add .
+git commit
+git push
+```
+4. Download flashed .uf2 file after successful built on GitHub Actions
+5. Connect kbrds one-by-one and transfer firmware file accordingly
+6. Reset the keyboard (splits)
 
 ## Reference
 - [1] Installing ZMK
