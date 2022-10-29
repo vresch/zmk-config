@@ -1,3 +1,6 @@
+/*
+This version is adapted for macos. ctrl-cmd(gui) interchanged in macOS and on macKbrd
+*/
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
@@ -7,9 +10,8 @@
 #define LLTR	0
 #define LNBR	1
 #define LNAV	2
-#define LFUN	3
 
-//GUI nav MacOS
+//View nav MacOS. G means GUI(CMD in macOS)
 #define NTAB LG(TAB)
 #define PTAB LG(LS(TAB))
 #define NWIN LC(TAB)
@@ -17,18 +19,20 @@
 #define PDKT LG(LEFT)
 #define NDKT LG(RIGHT)
 //switch input source
-#define LANG LC(SPACE)
+#define LANG LG(SPACE)
 
-//cut copy paste
-// #define CCUT LC(X)
-// #define CCOPY LC(C)
-// #define CPASTE LC(V)
+// cut copy paste
+// #define CCUT LG(X)
+// #define CCOPY LG(C)
+// #define CPASTE LG(V)
 
 //undo redo
-// #define CUNDO LC(Z)
-// #define CREDO LC(LS(Z))
+// #define CUNDO LG(Z)
+// #define CREDO LG(LS(Z))
 
-//find, select all?, F5(reload/debug)
+//find LG(F), select all LG(A), F5(reload/debug)
+#define BCK LG(LBKT)
+#define FWD LG(RBKT)
 
 &sl {
 	release-after-ms = <1000>;
@@ -76,7 +80,7 @@
 			label = "GRAVE_ESCAPE";
 			#binding-cells = <0>;
 			bindings = <&kp ESC>, <&kp GRAVE>;
-			mods = <(MOD_LGUI|MOD_LSFT|MOD_RGUI|MOD_RSFT)>;
+			mods = <(MOD_LCMD|MOD_LSFT|MOD_RCMD|MOD_RSFT)>;
 		};
 	};
 
@@ -86,56 +90,49 @@
 		letter_layer {
 			// ---------------------------------------------------------------------------------------------------------------------------------
 			// | Esc/` |  Q  |  W  |  E   |  R   |  T    |                                          |  Y    |  U    |  I    |  O   |   P   | '/"  |
-			// | [     |  A  |  S  |  D   | F/Shf|  G    |                                          |  H    | J/Shf |  K    |  L   |  ;/:  | ]    |
+			// | [/{   |  A  |  S  |  D   | F/Shf|  G    |                                          |  H    | J/Shf |  K    |  L   |  ;/:  | ]/}  |
 			// | Tab   |  Z  |  X  |  C   |  V   |  B    |  Lang   |  CAPS   |  |   Ins   |  Del    |  N    |  M    |  ,    |  .   |  -/_  | `/~  |
-			//                     |,</Gui| =/Alt|L1/Ctr |  Ret    |  (      |  |   )     |  Bsp    |Spc/Ctr| ?/Alt |  ./>  |
+			//                     |,</Ctr| =/Alt|L1/Cmd |  Ret    |  (      |  |   )     |  Bsp    |Spc/Cmd| ?/Alt |  ./>  |
 			bindings = <
 				&gresc   		&kp Q &kp W &kp E &kp R 					&kp T           		                             				&kp Y &kp U  			&kp I			&kp O		&kp P   	&kp SQT
 				&kp LBKT 		&kp A &kp S &kp D &hm LSHFT F 		&kp G       		                                  			&kp H &hm RSHFT J	&kp K			&kp L		&kp SEMI	&kp RBKT
 				&kp TAB   	&kp Z &kp X &kp C &kp V 					&kp B 			&kp LANG	&kp CAPS  		&kp INS 	&kp DEL		&kp N &kp M  			&kp COMMA &kp DOT &kp MINUS	&kp GRAVE
-												&hm LGUI COMMA &hm LALT EQUAL &lc LCTRL 1	&kp RET		&kp LPAR			&kp RPAR	&kp BSPC	&hm RCTRL SPACE &hm RALT QMARK &kp DOT
+												&hm LCTRL COMMA &hm LALT EQUAL &lc LCMD 1	&kp RET		&kp LPAR			&kp RPAR	&kp BSPC	&hm RCMD SPACE &hm RALT QMARK &kp DOT
 			>;
 		};
+
+			// todo add ukr/rus info table
+			// ---------------------------------------------------------------------------------------------------------------------------------
+			// | Esc/` |  Q  |  W  |  E   |  R   |  T    |                                          |  Y    |  U    |  I    |  O   |   P   | '/"  |
+			// | [/{   |  A  |  S  |  D   | F/Shf|  G    |                                          |  H    | J/Shf |  K    |  L   |  ;/:  | ]/}  |
+			// | Tab   |  Z  |  X  |  C   |  V   |  B    |  Lang   |  CAPS   |  |   Ins   |  Del    |  N    |  M    |  ,    |  .   |  -/_  | `/~  |
+			//                     |,</Ctr| =/Alt|L1/Cmd |  Ret    |  (      |  |   )     |  Bsp    |Spc/Cmd| ?/Alt |  ./>  |
 
 		num_layer {
 			// ---------------------------------------------------------------------------------------------------------------------------------
 			// |  ---  |  ^  |  #  |  \   |  +   |  *    |                                          | F12   |  7    |  8    |  9   |   |   | ---  |
 			// |  ---  |  &  |  $  |  @   |!/Shf |  /    |                                          | F11   | 4/Shf |  5    |  6   |   0   | ---  |
-			// |  ---  | --- | --- | ---  | ---  |  %    |   ---   |  ---    |  |   ---   |  ---    | F10   |  1    |  2    |  3   |  ---  | ---  |
-			//                     | ---  | ---  |L2/Ctr |   ---   |  ---    |  |   ---   |  ---    |L0/Ctr | ---   | ---   |
+			// |  ---  | --- | --- | ---  | ---  |  %    |   ---   |  ---    |  |   ---   |  ---    | F10   |  1    |  2    |  3   |  -/_  | ---  |
+			//                     | ---  | ---  |L2/Cmd |   ---   |  ---    |  |   ---   |  ---    |L0/Cmd | ---   | ---   |
 			bindings = <
 				&trans	&kp CARET	&kp HASH  &kp BSLH	&kp PLUS 				&kp STAR                             			&kp F12 &kp N7 				&kp N8 &kp N9 &kp PIPE &trans
 				&trans	&kp AMPS	&kp DLLR 	&kp AT 		&hm LSHFT EXCL 	&kp FSLH                           				&kp F11	&hm RSHFT N4	&kp N5 &kp N6 &kp N0 &trans
 				&trans	&trans		&trans		&trans		&trans 					&kp PRCNT	&trans 	&trans	&trans	&trans	&kp F10 &kp N1 				&kp N2 &kp N3 &trans &trans
-																		&trans  	&trans		&lc LCTRL 2 		&trans	&trans 	&trans	&trans	&lc RCTRL 0 &trans &trans
+																		&trans  	&trans			&lc LCMD 2 		&trans	&trans 	&trans	&trans	&lc RCMD 0 &trans &trans
 			>;
 		};
 
 		nav_layer {
 			// ---------------------------------------------------------------------------------------------------------------------------------
-			// | ---  | --- | --- | Tab- | Tab+ | Vol+  |                                          | Pgup  | Home |  Up   | End  |  ---  | ---  |
-			// | ---  | Win-| Win+| Alt  | Shf  | Vol-  |                                          | Pgdw  | Left |  Down | Right|  ---  | ---  |
-			// | --- 	| /Ble| --- | Ble+ | Ble0 | Mute  |  Play   |  App    |  |   ---   |  ---    | none  | Dkt- |  none | Dkt+ |  ---  | ---  |
-			//                    | Gui  | Alt  | Ctr   |   ---   |  ---    |  |   ---   |  ---    |L0/Ctr | Alt  | Gui   |
+			// | ---  | Win-| Win+| Tab- | Tab+ | Vol+  |                                          | Pgup  | Home |  Up   | End  |  ---  | Ble+ |
+			// | Back | --- | --- | ---  | ---  | Vol-  |                                          | Pgdw  | Left |  Down | Right|  ---  | Ble0 |
+			// | --- 	| --- | --- | ---  | ---  | Mute  |  Play   |  App    |  |   Out   |  ---    | none  | Dkt- |  none | Dkt+ |  ---  | /Ble |
+			//                    | Ctr  | Alt  | Cmd   |   ---   |  ---    |  |   ---   |  ---    |L0/Cmd | Alt  |  Ctr  |
 			bindings = <
-				&trans 	&trans 			&trans		&kp PTAB 		&kp NTAB  			&kp C_VOL_UP                       								&kp PG_UP &kp HOME 	&kp UP   	&kp END   	&trans	&trans
-				&trans 	&kp PWIN 		&kp NWIN 	&kp LALT 		&kp LSHFT	 			&kp C_VOL_DN                        							&kp PG_DN &kp LEFT 	&kp DOWN 	&kp RIGHT 	&trans	&trans
-				&trans	&bt BT_CLR	&trans    &bt BT_NXT	&bt BT_SEL 0    &kp C_MUTE		&kp C_PP	&kp K_APP	&trans	&trans 	&none   	&kp PDKT 	&none			&kp NDKT		&trans	&trans
-																			&kp LGUI  &kp LALT   &kp LCTRL 	&trans 		&trans  	&trans		&trans	&lc RCTRL 0	&kp RALT	&kp RGUI
-			>;
-		};
-
-		function_layer {
-			// ---------------------------------------------------------------------------------------------------------------------------------
-			// | none  |  F2 | mute| V+   | stp  | ---   |                                       | F12   |  F7   |  F8   |  F9  | Print| none |
-			// | none  | caps| Prev| V-   | Next | ---   |                                       | F11   |  F4   |  F5   |  F6  | Ins  | none |
-			// | none  | /Ble| Ble0| Ble1 | Ble2 | Ble3  |  Ble4  |  Out    |  |   ---   |  ---  | F10   |  F1   |  F2   |  F3  | ---  | none |
-			//                     | ---  | ---  | ---   |  ---   |  ---    |  |   ---   |  ---  | ---   | ---   | ---   |
-			bindings = <
-				&trans &kp F2     &kp C_MUTE   &kp C_VOL_UP &kp C_STOP   &none                                                &kp F12 &kp F7 &kp F8 &kp F9 &kp PSCRN &trans
-				&trans &kp CAPS   &kp C_PREV   &kp C_VOL_DN &kp C_NEXT   &none                                                &kp F11 &kp F4 &kp F5 &kp F6 &kp INS  &trans
-				&trans &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &out OUT_TOG  &none  &none &kp F10 &kp F1 &kp F2 &kp F3 &trans   &trans
-																&trans        &trans        &trans           &trans       &trans        &trans &trans &trans &trans &trans
+				&trans 	&kp PWIN 	&kp NWIN	&kp PTAB 		&kp NTAB  &kp C_VOL_UP                    												&kp PG_UP &kp HOME 	&kp UP   	&kp END   	&trans	&bt BT_NXT
+				&kp BCK &trans 		&trans 		&trans 			&trans	 	&kp C_VOL_DN                      											&kp PG_DN &kp LEFT 	&kp DOWN 	&kp RIGHT 	&trans	&bt BT_SEL 0
+				&trans	&trans		&trans    &trans			&trans    &kp C_MUTE	&kp C_PP	&kp K_APP		&out OUT_TOG	&trans 	&none   	&kp PDKT 	&none			&kp NDKT		&trans	&bt BT_CLR
+																		&kp LCTRL  &kp LALT   &kp LCMD 		&trans 		&trans  		&trans				&trans	&lc RCMD 0	&kp RALT	&kp RCTRL
 			>;
 		};
 

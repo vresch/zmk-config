@@ -23,9 +23,10 @@ git add .
 git commit
 git push
 ```
-4. Download flashed .uf2 file after successful built on GitHub Actions
-5. Connect kbrds one-by-one and transfer firmware file accordingly
-6. Reset the keyboard (splits)
+4. Download flashed .uf2 file after successful built on GitHub Actions (eg. https://github.com/vresch/zmk-config/actions)
+5. Connect kbrd parts via USB one-by-one and transfer firmware file accordingly
+6. Reset the keyboard
+7. Connect the keyboard via Bluetooth. Test. Enjoy!
 
 ## Reference
 - [1] Installing ZMK
