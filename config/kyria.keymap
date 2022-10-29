@@ -80,7 +80,7 @@ This version is adapted for macos. ctrl-cmd(gui) interchanged in macOS and on ma
 			label = "GRAVE_ESCAPE";
 			#binding-cells = <0>;
 			bindings = <&kp ESC>, <&kp GRAVE>;
-			mods = <(MOD_LCMD|MOD_LSFT|MOD_RCMD|MOD_RSFT)>;
+			mods = <(MOD_LGUI|MOD_LSFT|MOD_RGUI|MOD_RSFT)>;
 		};
 	};
 
