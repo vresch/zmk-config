@@ -24,8 +24,8 @@ git commit
 git push
 ```
 4. Download flashed .uf2 file after successful built on GitHub Actions (eg. https://github.com/vresch/zmk-config/actions)
-5. Connect kbrd parts via USB one-by-one and transfer firmware file accordingly
-6. Reset the keyboard
+5. Connect kbrd parts via USB one-by-one (Double-click RESET btn on a split to activate flash mode) and transfer firmware files accordingly
+6. Reset the keyboard (Single-click RESET btn on both splits)
 7. Connect the keyboard via Bluetooth. Test. Enjoy!
 
 ## Reference

@@ -1,6 +1,8 @@
 /*
-This version is adapted for macos. ctrl-cmd(gui) interchanged in macOS and on macKbrd
+This version is adapted for macos. ctrl-cmd(gui) interchanged in macOS and on macKbrd.
+Layers are changing through 0 layer. 0 layer as a base layer.
 */
+
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
@@ -8,16 +10,16 @@ This version is adapted for macos. ctrl-cmd(gui) interchanged in macOS and on ma
 
 // Layers
 #define LLTR	0
-#define LNBR	1
-#define LNAV	2
+#define LNBV	1
+#define LQCK	2
 
 //View nav MacOS. G means GUI(CMD in macOS)
-#define NTAB LG(TAB)
-#define PTAB LG(LS(TAB))
-#define NWIN LC(TAB)
-#define PWIN LC(LS(TAB))
-#define PDKT LG(LEFT)
-#define NDKT LG(RIGHT)
+#define PDKT LC(LEFT)
+#define NDKT LC(RIGHT)
+#define NTAB LC(TAB)
+#define PTAB LC(LS(TAB))
+#define NWIN LG(TAB)
+#define PWIN LG(LS(TAB))
 //switch input source
 #define LANG LG(SPACE)
 
@@ -40,30 +42,13 @@ This version is adapted for macos. ctrl-cmd(gui) interchanged in macOS and on ma
 
 / {
 	behaviors {
-    // hm: homerow_mods {
-    //   compatible = "zmk,behavior-hold-tap";
-    //   label = "HOMEROW_MODS";
-    //   #binding-cells = <2>;
-    //   tapping_term_ms = <200>;
-    //   flavor = "tap-preferred";
-    //   bindings = <&kp>, <&cp>;
-    // };
 		hm: homerow_mods {
 			compatible = "zmk,behavior-hold-tap";
-			label = "homerow mods";
+			label = "HOMEROW_MODS";
 			#binding-cells = <2>;
-			tapping_term_ms = <220>;
-			flavor = "balanced";
+			tapping_term_ms = <220>; // <200>;
+			flavor = "balanced"; // "tap-preferred";
 			bindings = <&kp>, <&kp>;
-		};
-
-		mx: layer_tap_FNC {
-			compatible = "zmk,behavior-hold-tap";
-			label = "LAYER_TAP_FNC";
-			#binding-cells = <2>;
-			flavor = "hold-preferred";
-			tapping_term_ms = <200>;
-			bindings = <&mo>, <&sl>;
 		};
 
 		lc: layer_tap_mod_hold {
@@ -75,12 +60,29 @@ This version is adapted for macos. ctrl-cmd(gui) interchanged in macOS and on ma
 			bindings = <&kp>, <&to>;
 		};
 
+		lh: hold_layer_tap_key {
+			compatible = "zmk,behavior-hold-tap";
+			label = "HOLD_LAYER_TAP_KEY";
+			#binding-cells = <2>;
+			flavor = "hold-preferred";
+			tapping_term_ms = <200>;
+			bindings = <&mo>, <&kp>;
+		};
+
 		gresc: grave_escape {
 			compatible = "zmk,behavior-mod-morph";
 			label = "GRAVE_ESCAPE";
 			#binding-cells = <0>;
 			bindings = <&kp ESC>, <&kp GRAVE>;
 			mods = <(MOD_LGUI|MOD_LSFT|MOD_RGUI|MOD_RSFT)>;
+		};
+
+		lhmod: hold_layer_mod_alt {
+			compatible = "zmk,behavior-mod-morph";
+			label = "GRAVE_ESCAPE";
+			#binding-cells = <0>;
+			bindings = <&mo L2>, <&kp ALT>;
+			mods = <(MOD_LGUI|MOD_LSFT|MOD_RGUI|MOD_RSFT|MOD_LCTL|MOD_RCTL)>;
 		};
 	};
 
@@ -92,47 +94,46 @@ This version is adapted for macos. ctrl-cmd(gui) interchanged in macOS and on ma
 			// | Esc/` |  Q  |  W  |  E   |  R   |  T    |                                          |  Y    |  U    |  I    |  O   |   P   | '/"  |
 			// | [/{   |  A  |  S  |  D   | F/Shf|  G    |                                          |  H    | J/Shf |  K    |  L   |  ;/:  | ]/}  |
 			// | Tab   |  Z  |  X  |  C   |  V   |  B    |  Lang   |  CAPS   |  |   Ins   |  Del    |  N    |  M    |  ,    |  .   |  -/_  | `/~  |
-			//                     |,</Ctr| =/Alt|L1/Cmd |  Ret    |  (      |  |   )     |  Bsp    |Spc/Cmd| ?/Alt |  ./>  |
+			//                     |,</Ctr| =/Alt|L1/Cmd |  Ret    |  (      |  |   )     |  Bsp    |  Spc  | ?/L2  |  ./>  |
 			bindings = <
-				&gresc   		&kp Q &kp W &kp E &kp R 					&kp T           		                             				&kp Y &kp U  			&kp I			&kp O		&kp P   	&kp SQT
-				&kp LBKT 		&kp A &kp S &kp D &hm LSHFT F 		&kp G       		                                  			&kp H &hm RSHFT J	&kp K			&kp L		&kp SEMI	&kp RBKT
-				&kp TAB   	&kp Z &kp X &kp C &kp V 					&kp B 			&kp LANG	&kp CAPS  		&kp INS 	&kp DEL		&kp N &kp M  			&kp COMMA &kp DOT &kp MINUS	&kp GRAVE
-												&hm LCTRL COMMA &hm LALT EQUAL &lc LCMD 1	&kp RET		&kp LPAR			&kp RPAR	&kp BSPC	&hm RCMD SPACE &hm RALT QMARK &kp DOT
+				&gresc   		&kp Q &kp W &kp E &kp R 					&kp T           		                             			&kp Y &kp U  					&kp I			&kp O		&kp P   	&kp SQT
+				&kp LBKT 		&kp A &kp S &kp D &hm LSHFT F 		&kp G       		                                  		&kp H &hm RSHFT J			&kp K			&kp L		&kp SEMI	&kp RBKT
+				&kp TAB   	&kp Z &kp X &kp C &kp V 					&kp B 			&kp LANG	&kp CAPS  	&kp INS 	&kp DEL		&kp N &kp M  					&kp COMMA &kp DOT &kp MINUS	&kp GRAVE
+												&hm LCTRL COMMA &hm LALT EQUAL &lc LCMD 1	&kp RET		&kp LPAR		&kp RPAR	&kp BSPC	&kp SPACE &lh 2 QMARK &kp DOT
+			>;
+			// todo modify ukr/rus info table
+			// ---------------------------------------------------------------------------------------------------------------------------------
+			// | Esc/ґ |  Й  |  Ц  |  У   |  К   |  Е/Ё  |                                          |  Н    |  Г    |  Ш    |  Щ   |   З   | Є/Э  |
+			// |   Х   |  Ф  | І/Ы |  В   | А/Shf|  П    |                                          |  Р    | О/Shf |  Л    |  Д   |   Ж   | Ї/Ъ  |
+			// | Tab   |  Z  |  X  |  C   |  V   |  B    |  Lang   |  CAPS   |  |   Ins   |  Del    |  N    |  M    |  ,    |  .   |  -/_  | `/~ 	|
+			//                     |,</Ctr| =/Alt|L1/Cmd |  Ret    |  (      |  |   )     |  Bsp    |  Spc  | ?/L2  |  ./>  |
+		};
+
+		num_nav_layer {
+			// ---------------------------------------------------------------------------------------------------------------------------------
+			// | ---  | F12 |  7  |  8   |  9   |   |   |                                          | Pgup  | Home |  Up   | End  |  ---  | Ble+ |
+			// | Back | F11 |  4  |  5   |6/Shf |   0   |                                          | Pgdw  | Left |  Down | Right|  ---  | Ble0 |
+			// | --- 	| F10 |  1  |  2   |  3   |  -/_  |   ---   |  App    |  |   Out   |  ---    | none  | Dkt- |  none | Dkt+ |  ---  | /Ble |
+			//                    | Ctr  | Alt  | Cmd   |   ---   |  ---    |  |   ---   |  ---    |L0/Cmd |L2/Alt|  Ctr  |
+			bindings = <
+				&trans 	&kp F12	&kp N7	&kp N8 &kp N9 			&kp PIPE                    												&kp PG_UP &kp HOME 	&kp UP   	&kp END   	&trans	&bt BT_NXT
+				&kp BCK &kp F11	&kp N4	&kp N5 &hm RSHFT N6 &kp N0                      												&kp PG_DN &kp LEFT 	&kp DOWN 	&kp RIGHT 	&trans	&bt BT_SEL 0
+				&trans	&kp F10	&kp N1	&kp N2 &kp N3 			&kp MINUS	&trans	&kp K_APP		&out OUT_TOG	&trans 	&none   	&kp PDKT 	&none			&kp NDKT		&trans	&bt BT_CLR
+																&kp LCTRL  &kp LALT &kp LCMD 	&trans 	&trans  		&trans				&trans	&lc RCMD 0	&lhmod	&kp RCTRL
 			>;
 		};
 
-			// todo add ukr/rus info table
+		quick_layer {
 			// ---------------------------------------------------------------------------------------------------------------------------------
-			// | Esc/` |  Q  |  W  |  E   |  R   |  T    |                                          |  Y    |  U    |  I    |  O   |   P   | '/"  |
-			// | [/{   |  A  |  S  |  D   | F/Shf|  G    |                                          |  H    | J/Shf |  K    |  L   |  ;/:  | ]/}  |
-			// | Tab   |  Z  |  X  |  C   |  V   |  B    |  Lang   |  CAPS   |  |   Ins   |  Del    |  N    |  M    |  ,    |  .   |  -/_  | `/~  |
-			//                     |,</Ctr| =/Alt|L1/Cmd |  Ret    |  (      |  |   )     |  Bsp    |Spc/Cmd| ?/Alt |  ./>  |
-
-		num_layer {
-			// ---------------------------------------------------------------------------------------------------------------------------------
-			// |  ---  |  ^  |  #  |  \   |  +   |  *    |                                          | F12   |  7    |  8    |  9   |   |   | ---  |
-			// |  ---  |  &  |  $  |  @   |!/Shf |  /    |                                          | F11   | 4/Shf |  5    |  6   |   0   | ---  |
-			// |  ---  | --- | --- | ---  | ---  |  %    |   ---   |  ---    |  |   ---   |  ---    | F10   |  1    |  2    |  3   |  -/_  | ---  |
-			//                     | ---  | ---  |L2/Cmd |   ---   |  ---    |  |   ---   |  ---    |L0/Cmd | ---   | ---   |
+			// | ---  |  ^  |  #  |  \   |  +   |  *    |                                          | Pgup  | Home |  Up   | End  |  ---  | ---  |
+			// | Back |  &  |  $  |  @   |!/Shf |  /    |                                          | Pgdw  | Left |  Down | Right|  ---  | ---  |
+			// | --- 	| --- | --- | Tab- | Tab+ | Play  |   Vol+  |  Vol-   |  |   Out   |  ---    | none  | Dkt- |  none | Dkt+ |  ---  | ---  |
+			//                    | Ctr  | Alt  | Cmd   |   ---   |  ---    |  |   ---   |  ---    | ---   |(HLD) |  ---  |
 			bindings = <
-				&trans	&kp CARET	&kp HASH  &kp BSLH	&kp PLUS 				&kp STAR                             			&kp F12 &kp N7 				&kp N8 &kp N9 &kp PIPE &trans
-				&trans	&kp AMPS	&kp DLLR 	&kp AT 		&hm LSHFT EXCL 	&kp FSLH                           				&kp F11	&hm RSHFT N4	&kp N5 &kp N6 &kp N0 &trans
-				&trans	&trans		&trans		&trans		&trans 					&kp PRCNT	&trans 	&trans	&trans	&trans	&kp F10 &kp N1 				&kp N2 &kp N3 &trans &trans
-																		&trans  	&trans			&lc LCMD 2 		&trans	&trans 	&trans	&trans	&lc RCMD 0 &trans &trans
-			>;
-		};
-
-		nav_layer {
-			// ---------------------------------------------------------------------------------------------------------------------------------
-			// | ---  | Win-| Win+| Tab- | Tab+ | Vol+  |                                          | Pgup  | Home |  Up   | End  |  ---  | Ble+ |
-			// | Back | --- | --- | ---  | ---  | Vol-  |                                          | Pgdw  | Left |  Down | Right|  ---  | Ble0 |
-			// | --- 	| --- | --- | ---  | ---  | Mute  |  Play   |  App    |  |   Out   |  ---    | none  | Dkt- |  none | Dkt+ |  ---  | /Ble |
-			//                    | Ctr  | Alt  | Cmd   |   ---   |  ---    |  |   ---   |  ---    |L0/Cmd | Alt  |  Ctr  |
-			bindings = <
-				&trans 	&kp PWIN 	&kp NWIN	&kp PTAB 		&kp NTAB  &kp C_VOL_UP                    												&kp PG_UP &kp HOME 	&kp UP   	&kp END   	&trans	&bt BT_NXT
-				&kp BCK &trans 		&trans 		&trans 			&trans	 	&kp C_VOL_DN                      											&kp PG_DN &kp LEFT 	&kp DOWN 	&kp RIGHT 	&trans	&bt BT_SEL 0
-				&trans	&trans		&trans    &trans			&trans    &kp C_MUTE	&kp C_PP	&kp K_APP		&out OUT_TOG	&trans 	&none   	&kp PDKT 	&none			&kp NDKT		&trans	&bt BT_CLR
-																		&kp LCTRL  &kp LALT   &kp LCMD 		&trans 		&trans  		&trans				&trans	&lc RCMD 0	&kp RALT	&kp RCTRL
+				&trans	&kp CARET	&kp HASH  &kp BSLH	&kp PLUS 				&kp STAR                    																&kp PG_UP &kp HOME 	&kp UP   	&kp END   	&trans	&trans
+				&kp BCK	&kp AMPS	&kp DLLR 	&kp AT 		&hm LSHFT EXCL 	&kp FSLH                      															&kp PG_DN &kp LEFT 	&kp DOWN 	&kp RIGHT 	&trans	&trans
+				&trans	&trans		&trans    &kp PTAB	&kp PTAB		    &kp C_PP	&kp C_VOL_UP	&kp C_VOL_UP	&out OUT_TOG	&trans 	&none   	&kp PDKT 	&none			&kp NDKT		&trans	&trans
+																		&kp LCTRL  &kp LALT   &kp LCMD 		&trans 		&trans  						&trans				&trans	&trans		&trans			&trans
 			>;
 		};
 
