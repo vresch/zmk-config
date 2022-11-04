@@ -77,6 +77,29 @@ Layers are changing through 0 layer. 0 layer as a base layer.
 			mods = <(MOD_LGUI|MOD_LSFT|MOD_RGUI|MOD_RSFT)>;
 		};
 
+		dotgt: dot_great {
+			compatible = "zmk,behavior-mod-morph";
+			label = "DOT_GREAT";
+			#binding-cells = <0>;
+			bindings = <&kp KP_DOT>, <&kp GT>;
+			mods = <(MOD_LSFT|MOD_RSFT)>;
+		};
+
+		lparlt: left_parenthesis_less_than {
+			compatible = "zmk,behavior-mod-morph";
+			label = "LPAR_LESS";
+			#binding-cells = <0>;
+			bindings = <&kp LPAR>, <&kp LT>;
+			mods = <(MOD_LSFT|MOD_RSFT)>;
+		};
+		rpargt: right_parenthesis_greater_than {
+			compatible = "zmk,behavior-mod-morph";
+			label = "RPAR_GREAT";
+			#binding-cells = <0>;
+			bindings = <&kp RPAR>, <&kp GT>;
+			mods = <(MOD_LSFT|MOD_RSFT)>;
+		};
+
 		lhmod: hold_layer_mod_alt {
 			compatible = "zmk,behavior-mod-morph";
 			label = "GRAVE_ESCAPE";
@@ -94,32 +117,32 @@ Layers are changing through 0 layer. 0 layer as a base layer.
 			// | Esc/` |  Q  |  W  |  E   |  R   |  T    |                                          |  Y    |  U    |  I    |  O   |   P   | '/"  |
 			// | [/{   |  A  |  S  |  D   | F/Shf|  G    |                                          |  H    | J/Shf |  K    |  L   |  ;/:  | ]/}  |
 			// | Tab   |  Z  |  X  |  C   |  V   |  B    |  Lang   |  CAPS   |  |   Ins   |  Del    |  N    |  M    |  ,    |  .   |  -/_  | `/~  |
-			//                     |,</Ctr| =/Alt|L1/Cmd |  Ret    |  (      |  |   )     |  Bsp    |  Spc  | ?/L2  |  ./>  |
+			//                     |,/Ctr	| =+/Alt|L1/Cmd |  Ret    |  (/<    |  |   )/>   |  Bsp    |  Spc  | ?/L2  |  ./>  |
 			bindings = <
-				&gresc   		&kp Q &kp W &kp E &kp R 					&kp T           		                             			&kp Y &kp U  					&kp I			&kp O		&kp P   	&kp SQT
-				&kp LBKT 		&kp A &kp S &kp D &hm LSHFT F 		&kp G       		                                  		&kp H &hm RSHFT J			&kp K			&kp L		&kp SEMI	&kp RBKT
-				&kp TAB   	&kp Z &kp X &kp C &kp V 					&kp B 			&kp LANG	&kp CAPS  	&kp INS 	&kp DEL		&kp N &kp M  					&kp COMMA &kp DOT &kp MINUS	&kp GRAVE
-												&hm LCTRL COMMA &hm LALT EQUAL &lc LCMD 1	&kp RET		&kp LPAR		&kp RPAR	&kp BSPC	&kp SPACE &lh 2 QMARK &kp DOT
+				&gresc   		&kp Q &kp W &kp E &kp R 				&kp T           		                             			&kp Y &kp U  					&kp I			&kp O		&kp P   	&kp SQT
+				&kp LBKT 		&kp A &kp S &kp D &hm LSHFT F 	&kp G       		                                  		&kp H &hm RSHFT J			&kp K			&kp L		&kp SEMI	&kp RBKT
+				&kp TAB   	&kp Z &kp X &kp C &kp V 				&kp B 			&kp LANG	&kp CAPS  	&kp INS 	&kp DEL		&kp N &kp M  					&kp COMMA &kp DOT &kp MINUS	&kp GRAVE
+									&hm LCTRL KP_COMMA &hm LALT EQUAL &lc LCMD 1	&kp RET		&lparlt			&rpargt		&kp BSPC	&kp SPACE &lh 2 QMARK &dotgt
 			>;
 			// todo modify ukr/rus info table
 			// ---------------------------------------------------------------------------------------------------------------------------------
 			// | Esc/ґ |  Й  |  Ц  |  У   |  К   |  Е/Ё  |                                          |  Н    |  Г    |  Ш    |  Щ   |   З   | Є/Э  |
 			// |   Х   |  Ф  | І/Ы |  В   | А/Shf|  П    |                                          |  Р    | О/Shf |  Л    |  Д   |   Ж   | Ї/Ъ  |
-			// | Tab   |  Z  |  X  |  C   |  V   |  B    |  Lang   |  CAPS   |  |   Ins   |  Del    |  N    |  M    |  ,    |  .   |  -/_  | `/~ 	|
-			//                     |,</Ctr| =/Alt|L1/Cmd |  Ret    |  (      |  |   )     |  Bsp    |  Spc  | ?/L2  |  ./>  |
+			// | Tab   |  Я  |  Ч  |  С   |  М   |  И    |  Lang   |  CAPS   |  |   Ins   |  Del    |  Т    |  Ь    |  Б    |  Ю   |  -/_  | Ґ/[ 	|
+			//                     |,/Ctr	| =+/Alt|L1/Cmd |  Ret    |  (/<    |  |   )/>   |  Bsp    |  Spc  | ,/L2  |  ./>  |
 		};
 
 		num_nav_layer {
 			// ---------------------------------------------------------------------------------------------------------------------------------
 			// | ---  | F12 |  7  |  8   |  9   |   |   |                                          | Pgup  | Home |  Up   | End  |  ---  | Ble+ |
 			// | Back | F11 |  4  |  5   |6/Shf |   0   |                                          | Pgdw  | Left |  Down | Right|  ---  | Ble0 |
-			// | --- 	| F10 |  1  |  2   |  3   |  -/_  |   ---   |  App    |  |   Out   |  ---    | none  | Dkt- |  none | Dkt+ |  ---  | /Ble |
+			// | --- 	| F10 |  1  |  2   |  3   |  -/_  |   ---   |  Menu   |  |   Out   |  ---    | none  | Dkt- |  none | Dkt+ |  ---  | /Ble |
 			//                    | Ctr  | Alt  | Cmd   |   ---   |  ---    |  |   ---   |  ---    |L0/Cmd |L2/Alt|  Ctr  |
 			bindings = <
 				&trans 	&kp F12	&kp N7	&kp N8 &kp N9 			&kp PIPE                    												&kp PG_UP &kp HOME 	&kp UP   	&kp END   	&trans	&bt BT_NXT
 				&kp BCK &kp F11	&kp N4	&kp N5 &hm RSHFT N6 &kp N0                      												&kp PG_DN &kp LEFT 	&kp DOWN 	&kp RIGHT 	&trans	&bt BT_SEL 0
-				&trans	&kp F10	&kp N1	&kp N2 &kp N3 			&kp MINUS	&trans	&kp K_APP		&out OUT_TOG	&trans 	&none   	&kp PDKT 	&none			&kp NDKT		&trans	&bt BT_CLR
-																&kp LCTRL  &kp LALT &kp LCMD 	&trans 	&trans  		&trans				&trans	&lc RCMD 0	&lhmod	&kp RCTRL
+				&trans	&kp F10	&kp N1	&kp N2 &kp N3 			&kp MINUS	&trans	&kp C_MENU		&out OUT_TOG	&trans 	&none   	&kp PDKT 	&none			&kp NDKT		&trans	&bt BT_CLR
+																&kp LCTRL  &kp LALT &kp LCMD 	&trans 	&trans  			&trans				&trans	&lc RCMD 0	&lhmod	&kp RCTRL
 			>;
 		};
 
@@ -127,13 +150,13 @@ Layers are changing through 0 layer. 0 layer as a base layer.
 			// ---------------------------------------------------------------------------------------------------------------------------------
 			// | ---  |  ^  |  #  |  \   |  +   |  *    |                                          | Pgup  | Home |  Up   | End  |  ---  | ---  |
 			// | Back |  &  |  $  |  @   |!/Shf |  /    |                                          | Pgdw  | Left |  Down | Right|  ---  | ---  |
-			// | --- 	| --- | --- | Tab- | Tab+ | Play  |   Vol+  |  Vol-   |  |   Out   |  ---    | none  | Dkt- |  none | Dkt+ |  ---  | ---  |
+			// | --- 	| --- | --- | Tab- | Tab+ | -/_   |   ---   |  ---    |  |   Vol-  |  Vol+   | Play  | Dkt- |  none | Dkt+ |  ---  | ---  |
 			//                    | Ctr  | Alt  | Cmd   |   ---   |  ---    |  |   ---   |  ---    | ---   |(HLD) |  ---  |
 			bindings = <
-				&trans	&kp CARET	&kp HASH  &kp BSLH	&kp PLUS 				&kp STAR                    																&kp PG_UP &kp HOME 	&kp UP   	&kp END   	&trans	&trans
-				&kp BCK	&kp AMPS	&kp DLLR 	&kp AT 		&hm LSHFT EXCL 	&kp FSLH                      															&kp PG_DN &kp LEFT 	&kp DOWN 	&kp RIGHT 	&trans	&trans
-				&trans	&trans		&trans    &kp PTAB	&kp NTAB		    &kp C_PP	&kp C_VOL_UP	&kp C_VOL_DN	&out OUT_TOG	&trans 	&none   	&kp PDKT 	&none			&kp NDKT		&trans	&trans
-																		&kp LCTRL  &kp LALT   &kp LCMD 		&trans 		&trans  						&trans				&trans	&trans		&trans			&trans
+				&trans	&kp CARET	&kp HASH  &kp BSLH	&kp PLUS 				&kp STAR                    												&kp PG_UP &kp HOME 	&kp UP   	&kp END   	&trans	&trans
+				&kp BCK	&kp AMPS	&kp DLLR 	&kp AT 		&hm LSHFT EXCL 	&kp FSLH                      											&kp PG_DN &kp LEFT 	&kp DOWN 	&kp RIGHT 	&trans	&trans
+				&trans	&trans		&trans    &kp PTAB	&kp NTAB		    &trans	&trans	&trans	&kp C_VOL_DN	&kp C_VOL_UP 	&kp C_PP 	&kp PDKT 	&none			&kp NDKT		&trans	&trans
+																		&kp LCTRL  &kp LALT   &kp LCMD 		&trans 	&trans  &trans				&trans				&trans		&trans			&trans
 			>;
 		};
 
