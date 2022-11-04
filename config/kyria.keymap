@@ -132,7 +132,7 @@ Layers are changing through 0 layer. 0 layer as a base layer.
 			bindings = <
 				&trans	&kp CARET	&kp HASH  &kp BSLH	&kp PLUS 				&kp STAR                    																&kp PG_UP &kp HOME 	&kp UP   	&kp END   	&trans	&trans
 				&kp BCK	&kp AMPS	&kp DLLR 	&kp AT 		&hm LSHFT EXCL 	&kp FSLH                      															&kp PG_DN &kp LEFT 	&kp DOWN 	&kp RIGHT 	&trans	&trans
-				&trans	&trans		&trans    &kp PTAB	&kp PTAB		    &kp C_PP	&kp C_VOL_UP	&kp C_VOL_UP	&out OUT_TOG	&trans 	&none   	&kp PDKT 	&none			&kp NDKT		&trans	&trans
+				&trans	&trans		&trans    &kp PTAB	&kp NTAB		    &kp C_PP	&kp C_VOL_UP	&kp C_VOL_DN	&out OUT_TOG	&trans 	&none   	&kp PDKT 	&none			&kp NDKT		&trans	&trans
 																		&kp LCTRL  &kp LALT   &kp LCMD 		&trans 		&trans  						&trans				&trans	&trans		&trans			&trans
 			>;
 		};
