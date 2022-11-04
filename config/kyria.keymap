@@ -81,7 +81,7 @@ Layers are changing through 0 layer. 0 layer as a base layer.
 			compatible = "zmk,behavior-mod-morph";
 			label = "GRAVE_ESCAPE";
 			#binding-cells = <0>;
-			bindings = <&mo L2>, <&kp ALT>;
+			bindings = <&mo LQCK>, <&kp RALT>;
 			mods = <(MOD_LGUI|MOD_LSFT|MOD_RGUI|MOD_RSFT|MOD_LCTL|MOD_RCTL)>;
 		};
 	};
