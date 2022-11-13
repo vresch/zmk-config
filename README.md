@@ -35,5 +35,17 @@ https://zmk.dev/docs/user-setup
 https://zmk.dev/docs/behaviors/layers
 - [3] Troubleshooting
 https://zmk.dev/docs/troubleshooting
+- [4] Troubleshooting: macos bluetooth keyboard passkey missmatch
+https://discussions.apple.com/thread/253818795
+Connect the USB keyboard and mouse to the computer.
+Open System Preferences – Bluetooth
+Un-pair the wireless keyboard and mouse.
+Turn off Bluetooth
+Restart the computer in Safe Mode per the directions in How to use safe mode on your Mac - Apple Support
+Restart the computer normally.
+Open System Preferences – Bluetooth
+Turn on Bluetooth
+Re-Pair the wireless keyboard and mouse.
+Unplug the USB keyboard and mouse and begin testing the wireless devices again. 
 ## Topics
 split-keyboard orthogonal-keyboard flashing-utility
