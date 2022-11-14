@@ -129,7 +129,7 @@ Layers are changing through 0 layer. 0 layer as a base layer.
 				&gresc   		&kp Q &kp W &kp E &kp R 				&kp T           		                             				&kp Y &kp U  			&kp I			&kp O		&kp P   				&kp SQT
 				&kp LBKT 		&kp A &kp S &kp D &hm LSHFT F 	&kp G       		                                  			&kp H &hm RSHFT J	&kp K			&kp L		&hm COLON SEMI	&kp RBKT
 				&kp TAB   	&kp Z &kp X &kp C &kp V 				&kp B 				&none			&kp CAPS  	&kp INS 	&kp DEL		&kp N &kp M  			&kp COMMA &kp DOT &kp MINUS				&kp GRAVE
-									&hm LCTRL KP_COMMA &hm LALT EQUAL &hm CMD SPACE	&kp RET		&lparlt			&rpargt		&kp BSPC	&sl 1	&lh 2 QMARK &kp KP_DOT
+									&hm LCTRL KP_COMMA &hm LALT EQUAL &hm LCMD SPACE	&kp RET		&lparlt			&rpargt		&kp BSPC	&sl 1	&lh 2 QMARK &kp KP_DOT
 			>;
 		};
 
@@ -142,7 +142,7 @@ Layers are changing through 0 layer. 0 layer as a base layer.
 			bindings = <
 				&trans	&kp CARET	&kp HASH  &kp BSLH			&kp PLUS 				&kp STAR                    							&hm CPASTE CCOPY 	&kp PTAB	&kp NTAB	&trans							&trans	&trans
 				&kp BCK	&kp AMPS	&kp DLLR 	&kp AT 				&hm LSHFT EXCL 	&kp FSLH                      						&hm LG(LEFT) LEFT	&kp DOWN	&kp UP		&hm LG(RIGHT) RIGHT	&trans	&trans
-				&trans	&trans		&trans    &kp C_VOL_DN	&kp C_VOL_UP 		&kp C_PP	&trans	&trans	&trans	&trans 	&mkp LCLK					&kp PDKT 	&trans		&kp NDKT						&trans	&trans
+				&trans	&trans		&trans    &kp C_VOL_DN	&kp C_VOL_UP 		&kp C_PP	&trans	&trans	&trans	&trans 	&mkp LCLK					&kp PDKT 	&kp NDKT	&trans							&trans	&trans
 																		&kp LCTRL  		&kp LALT   			&kp LCMD 	&trans 	&trans  &trans	&trans	&to 2	&to 3	&trans
 			>;
 		};
