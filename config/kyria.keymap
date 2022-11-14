@@ -23,7 +23,7 @@ Layers are changing through 0 layer. 0 layer as a base layer.
 #define LLTR	0
 #define LSGN	1
 #define LNUV	2
-#defint LNAV	3
+#define LNAV	3
 
 //View nav MacOS. G means GUI(CMD in macOS)
 #define PDKT LC(LEFT)
