@@ -100,14 +100,6 @@ Layers are changing through 0 layer. 0 layer as a base layer.
 			mods = <(MOD_LGUI|MOD_LSFT|MOD_RGUI|MOD_RSFT)>;
 		};
 
-		dotgt: dot_great {
-			compatible = "zmk,behavior-mod-morph";
-			label = "DOT_GREAT";
-			#binding-cells = <0>;
-			bindings = <&kp KP_DOT>, <&kp GT>;
-			mods = <(MOD_LSFT|MOD_RSFT)>;
-		};
-
 		lparlt: left_parenthesis_less_than {
 			compatible = "zmk,behavior-mod-morph";
 			label = "LPAR_LESS";
@@ -132,12 +124,12 @@ Layers are changing through 0 layer. 0 layer as a base layer.
 			// | Esc/` |  Q  |  W  |  E   |  R   |  T    |                                          |  Y    |  U    |  I    |  O   |   P   | '/"  |
 			// | [/{   |  A  |  S  |  D   | F/Shf|  G    |                                          |  H    | J/Shf |  K    |  L   |  ;/:  | ]/}  |
 			// | Tab   |  Z  |  X  |  C   |  V   |  B    |  ---    |  CAPS   |  |   Ins   |  Del    |  N    |  M    |  ,    |  .   |  -/_  | `/~  |
-			//                     |,/Ctr	|=+/Alt|Spc/Cmd|  Ret    |  (/<    |  |   )/>   |  Bsp    |  L1   | ?/L2  |  ./>  |
+			//                     |,/Ctr	|=+/Alt|Spc/Cmd|  Ret    |  (/<    |  |   )/>   |  Bsp    |  L1   | ?/L2  |  .    |
 			bindings = <
 				&gresc   		&kp Q &kp W &kp E &kp R 				&kp T           		                             				&kp Y &kp U  			&kp I			&kp O		&kp P   				&kp SQT
 				&kp LBKT 		&kp A &kp S &kp D &hm LSHFT F 	&kp G       		                                  			&kp H &hm RSHFT J	&kp K			&kp L		&hm COLON SEMI	&kp RBKT
 				&kp TAB   	&kp Z &kp X &kp C &kp V 				&kp B 				&none			&kp CAPS  	&kp INS 	&kp DEL		&kp N &kp M  			&kp COMMA &kp DOT &kp MINUS				&kp GRAVE
-									&hm LCTRL KP_COMMA &hm LALT EQUAL &hm CMD SPACE	&kp RET		&lparlt			&rpargt		&kp BSPC	&sl 1	&lh 2 QMARK &dotgt
+									&hm LCTRL KP_COMMA &hm LALT EQUAL &hm CMD SPACE	&kp RET		&lparlt			&rpargt		&kp BSPC	&sl 1	&lh 2 QMARK &kp KP_DOT
 			>;
 		};
 
@@ -188,7 +180,7 @@ Layers are changing through 0 layer. 0 layer as a base layer.
 			// | Esc/ґ |  Й  |  Ц  |  У   |  К   |  Е/Ё  |                                          |  Н    |  Г    |  Ш    |  Щ   |   З   | Є/Э  |
 			// |   Х   |  Ф  | І/Ы |  В   | А/Shf|  П    |                                          |  Р    | О/Shf |  Л    |  Д   |   Ж   | Ї/Ъ  |
 			// | Tab   |  Я  |  Ч  |  С   |  М   |  И    |  ---    |  CAPS   |  |   Ins   |  Del    |  Т    |  Ь    |  Б    |  Ю   |  -/_  | Ґ/[ 	|
-			//                     |,/Ctr	|=+/Alt|  Spc  |  Ret    |  (/<    |  |   )/>   |  Bsp    |L1/Cmd | ,/L2  |  ./>  |
+			//                     |,/Ctr	|=+/Alt|  Spc  |  Ret    |  (/<    |  |   )/>   |  Bsp    |L1/Cmd | ,/L2  |  .    |
 
 	};
 };
