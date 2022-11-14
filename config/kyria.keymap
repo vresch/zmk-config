@@ -122,14 +122,6 @@ Layers are changing through 0 layer. 0 layer as a base layer.
 			bindings = <&kp RPAR>, <&kp GT>;
 			mods = <(MOD_LSFT|MOD_RSFT)>;
 		};
-
-		lhmod: hold_layer_mod_alt {
-			compatible = "zmk,behavior-mod-morph";
-			label = "GRAVE_ESCAPE";
-			#binding-cells = <0>;
-			bindings = <&mo LQCK>, <&kp RALT>;
-			mods = <(MOD_LGUI|MOD_LSFT|MOD_RGUI|MOD_RSFT|MOD_LCTL|MOD_RCTL)>;
-		};
 	};
 
 	keymap {
@@ -173,7 +165,7 @@ Layers are changing through 0 layer. 0 layer as a base layer.
 				&trans 	&kp F12	&kp N7	&kp N8 &kp N9 			&kp PIPE                    											&hm CPASTE CCOPY 	&kp PTAB	&kp NTAB	&trans							&trans	&trans
 				&kp BCK &kp F11	&kp N4	&kp N5 &hm RSHFT N6 &kp N0                      											&hm LG(LEFT) LEFT	&kp DOWN	&kp UP		&hm LG(RIGHT) RIGHT	&trans	&trans
 				&trans	&kp F10	&kp N1	&kp N2 &kp N3 			&kp MINUS		&trans	&trans	&out OUT_TOG	&trans 	&mkp LCLK					&kp PDKT 	&kp NDKT	&trans							&trans	&trans	
-																&kp LCTRL  &kp LALT &lc LCMD L0	&trans 	&trans  &trans				&trans	&lc RCMD 1				&lhmod		&kp RCTRL
+																&kp LCTRL  &kp LALT &lc LCMD L0	&trans 	&trans  &trans				&trans	&lc RCMD 1				&lc RALT 3	&kp RCTRL
 			>;
 		};
 
