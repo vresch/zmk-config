@@ -2,10 +2,12 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
+    - name: mouse-ftc
+      url-base: https://github.com/ftc/zmk
   projects:
     - name: zmk
-      remote: zmkfirmware
-      revision: main
+      remote: mouse-ftc
+      revision: mouse-ftc
       import: app/west.yml
   self:
     path: config
