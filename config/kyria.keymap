@@ -151,7 +151,7 @@ Layers are changing through 0 layer. 0 layer as a base layer.
 				&trans	&kp CARET	&kp HASH  &kp BSLH			&kp PLUS 				&kp STAR                    							&hm CPASTE CCOPY 	&kp PTAB	&kp NTAB	&trans							&trans	&trans
 				&kp BCK	&kp AMPS	&kp DLLR 	&kp AT 				&hm LSHFT EXCL 	&kp FSLH                      						&hm LG(LEFT) LEFT	&kp DOWN	&kp UP		&hm LG(RIGHT) RIGHT	&trans	&trans
 				&trans	&trans		&trans    &kp C_VOL_DN	&kp C_VOL_UP 		&kp C_PP	&trans	&trans	&trans	&trans 	&mkp LCLK					&kp PDKT 	&trans		&kp NDKT						&trans	&trans
-																		&kp LCTRL  		&kp LALT   			&kp LCMD 	&trans 	&trans  &trans	&trans	&trans						&trans		&trans
+																		&kp LCTRL  		&kp LALT   			&kp LCMD 	&trans 	&trans  &trans	&trans	&to 2	&to 3	&trans
 			>;
 		};
 
@@ -160,12 +160,12 @@ Layers are changing through 0 layer. 0 layer as a base layer.
 			// | ---  | F12 |  7  |  8   |  9   |   |   |                                          |CPY/PST| Tab- |  Tab+ | ---  |  ---  | ---  |
 			// | Back | F11 |  4  |  5   |6/Shf |   0   |                                          | Lf/GL | Down |  Up   | Ri/GR|  ---  | ---  |
 			// | --- 	| F10 |  1  |  2   |  3   |  -/_  |   ---   |  ---    |  |   Out   |  ---    | LClk  | Dkt- |  Dkt+ | ---  |  ---  | ---  |
-			//                    | Ctr  | Alt  | Cmd   |   ---   |  ---    |  |   ---   |  ---    |L1/Cmd |L3/Alt|  Ctr  |
+			//                    | Ctr  | Alt  |L0/Cmd |   ---   |  ---    |  |   ---   |  ---    |L1/Cmd |L3/Alt|  Ctr  |
 			bindings = <
 				&trans 	&kp F12	&kp N7	&kp N8 &kp N9 			&kp PIPE                    											&hm CPASTE CCOPY 	&kp PTAB	&kp NTAB	&trans							&trans	&trans
 				&kp BCK &kp F11	&kp N4	&kp N5 &hm RSHFT N6 &kp N0                      											&hm LG(LEFT) LEFT	&kp DOWN	&kp UP		&hm LG(RIGHT) RIGHT	&trans	&trans
 				&trans	&kp F10	&kp N1	&kp N2 &kp N3 			&kp MINUS		&trans	&trans	&out OUT_TOG	&trans 	&mkp LCLK					&kp PDKT 	&kp NDKT	&trans							&trans	&trans	
-																&kp LCTRL  &kp LALT &lc LCMD L0	&trans 	&trans  &trans				&trans	&lc RCMD 1				&lc RALT 3	&kp RCTRL
+																&kp LCTRL  &kp LALT &lc LCMD 0	&trans 	&trans  &trans				&trans	&lc RCMD 1				&lc RALT 3	&kp RCTRL
 			>;
 		};
 
@@ -174,12 +174,12 @@ Layers are changing through 0 layer. 0 layer as a base layer.
 			// | ---  | --- | SrlL| MUP  | ScrR |  5    |                                          |CPY/PST| Tab- |  Tab+ | ---  |  ---  | Ble+ |
 			// | Back | --- | ML  | MDN  | MR   |  DEL  |                                          | Lf/GL | Down |  Up   | Ri/GR|  ---  | Ble0 |
 			// | --- 	| --- | RClk| ScrUp| ScrDn| ---   |   ---   |  ---    |  |   ---   |  ---    | LClk  | Dkt- |  Dkt+ | ---  |  ---  | /Ble |
-			//                    | Ctr  | Alt  | Cmd   |   ---   |  ---    |  |   ---   |  ---    |  L1   | ---  |  ---  |
+			//                    | Ctr  | Alt  |L0/Cmd |   ---   |  ---    |  |   ---   |  ---    |  L1   | ---  |  ---  |
 			bindings = <
 				&trans	&trans	&mwh SCROLL_LEFT	&mmv MOVE_UP		&mwh SCROLL_RIGHT	&kp NUM_5                    							&hm CPASTE CCOPY 	&kp PTAB	&kp NTAB	&trans							&trans	&bt BT_NXT
 				&kp BCK	&trans	&mmv MOVE_LEFT 		&mmv MOVE_DOWN 	&mmv MOVE_RIGHT 	&kp DEL                      							&hm LG(LEFT) LEFT	&kp DOWN	&kp UP		&hm LG(RIGHT) RIGHT	&trans	&bt BT_SEL 0
 				&trans	&trans	&mkp RCLK  				&mwh SCROLL_UP 	&mwh SCROLL_DOWN	&trans		&trans	&trans	&trans	&trans 	&mkp LCLK					&kp PDKT 	&kp NDKT	&trans							&trans	&bt BT_CLR
-																									&kp LCTRL  &kp LALT   &lc LCMD L0		&trans 	&trans  &trans	&trans	&to 0							&trans		&trans
+																									&kp LCTRL  &kp LALT   &lc LCMD 0		&trans 	&trans  &trans	&trans	&to 1							&trans		&trans
 			>;
 		};
 
