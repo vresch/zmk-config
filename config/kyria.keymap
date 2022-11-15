@@ -138,12 +138,12 @@ Layers are changing through 0 layer. 0 layer as a base layer.
 			// | ---  |  ^  |  #  |  \   |  +   |  *    |                                          |CPY/PST| Tab- |  Tab+ | ---  |  ---  | ---  |
 			// | Back |  &  |  $  |  @   |!/Shf |  /    |                                          | Lf/GL | Down |  Up   | Ri/GR|  ---  | ---  |
 			// | --- 	| --- | --- | Vol- | Vol+ | Ply   |   ---   |  ---    |  |   ---   |  ---    | LClk  | Dkt- |  Dkt+ | ---  |  ---  | ---  |
-			//                    | Ctr  | Alt  | Cmd   |   ---   |  ---    |  |   ---   |  ---    | L2    | L3   |  ---  |
+			//                    | Ctr  | Alt  |L0/Cmd |   ---   |  ---    |  |   ---   |  ---    | L2    | L3   |  ---  |
 			bindings = <
-				&trans	&kp CARET	&kp HASH  &kp BSLH			&kp PLUS 				&kp STAR                    							&hm CPASTE CCOPY 	&kp PTAB	&kp NTAB	&trans							&trans	&trans
-				&kp BCK	&kp AMPS	&kp DLLR 	&kp AT 				&hm LSHFT EXCL 	&kp FSLH                      						&hm LG(LEFT) LEFT	&kp DOWN	&kp UP		&hm LG(RIGHT) RIGHT	&trans	&trans
-				&trans	&trans		&trans    &kp C_VOL_DN	&kp C_VOL_UP 		&kp C_PP	&trans	&trans	&trans	&trans 	&mkp LCLK					&kp PDKT 	&kp NDKT	&trans							&trans	&trans
-																		&kp LCTRL  		&kp LALT   			&kp LCMD 	&trans 	&trans  &trans	&trans	&to 2	&to 3	&trans
+				&trans	&kp CARET	&kp HASH  &kp BSLH			&kp PLUS 				&kp STAR    	                							&hm CPASTE CCOPY 	&kp PTAB	&kp NTAB	&trans							&trans	&trans
+				&kp BCK	&kp AMPS	&kp DLLR 	&kp AT 				&hm LSHFT EXCL 	&kp FSLH    	                  						&hm LG(LEFT) LEFT	&kp DOWN	&kp UP		&hm LG(RIGHT) RIGHT	&trans	&trans
+				&trans	&trans		&trans    &kp C_VOL_DN	&kp C_VOL_UP 		&kp C_PP		&trans	&trans	&trans	&trans 	&mkp LCLK					&kp PDKT 	&kp NDKT	&trans							&trans	&trans
+																		&kp LCTRL  		&kp LALT   			&lc LCMD 0 	&trans 	&trans  &trans	&trans	&to 2	&to 3	&trans
 			>;
 		};
 
