@@ -126,10 +126,10 @@ Layers are changing through 0 layer. 0 layer as a base layer.
 			// | Tab   |  Z  |  X  |  C   |  V   |  B    |  ---    |  CAPS   |  |   Ins   |  Del    |  N    |  M    |  ,    |  .   |  -/_  | `/~  |
 			//                     |,/Ctr	|=+/Alt|Spc/Cmd|  Ret    |  (/<    |  |   )/>   |  Bsp    |  L1   | ?/L2  |  .    |
 			bindings = <
-				&gresc   		&kp Q &kp W &kp E &kp R 				&kp T           		                             				&kp Y &kp U  			&kp I			&kp O		&kp P   				&kp SQT
-				&kp LBKT 		&kp A &kp S &kp D &hm LSHFT F 	&kp G       		                                  			&kp H &hm RSHFT J	&kp K			&kp L		&hm COLON SEMI	&kp RBKT
-				&kp TAB   	&kp Z &kp X &kp C &kp V 				&kp B 				&none			&kp CAPS  	&kp INS 	&kp DEL		&kp N &kp M  			&kp COMMA &kp DOT &kp MINUS				&kp GRAVE
-									&hm LCTRL KP_COMMA &hm LALT EQUAL &hm LCMD SPACE	&kp RET		&lparlt			&rpargt		&kp BSPC	&sl 1	&lh 2 QMARK &kp KP_DOT
+				&gresc   		&kp Q &kp W &kp E &kp R 				&kp T           		                        		     				&kp Y &kp U  			&kp I			&kp O		&kp P   				&kp SQT
+				&kp LBKT 		&kp A &kp S &kp D &hm LSHFT F 	&kp G       		                        		          			&kp H &hm RSHFT J	&kp K			&kp L		&hm COLON SEMI	&kp RBKT
+				&kp TAB   	&kp Z &kp X &kp C &kp V 				&kp B 					&none			&caps_word  	&kp INS 	&kp DEL		&kp N &kp M  			&kp COMMA &kp DOT &kp MINUS				&kp GRAVE
+									&hm LCTRL KP_COMMA &hm LALT EQUAL &hm LCMD SPACE	&kp RET		&lparlt				&rpargt		&kp BSPC	&sl 1	&lh 2 QMARK &kp KP_DOT
 			>;
 		};
 
