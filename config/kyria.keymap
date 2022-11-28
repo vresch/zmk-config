@@ -29,7 +29,7 @@ Layers are changing through 0 layer. 0 layer as a base layer.
 // R0-R4 - LNAV // type: one-handed left-right roll
 // R0-R0 - LNUM // type: dbl-tap R0
 // R0-L0 - LLTR // action: return to default_layer from all layers
-// R0-L4- UNDO; R0-L3- REDO
+// R0-L4- CUNDO; R0-L3- CREDO
 // R0-L1- CAPSW
 // Left-right, right-left, dbl-tap, one-handed, dbl-handed
 
@@ -61,8 +61,8 @@ Layers are changing through 0 layer. 0 layer as a base layer.
 #define CCOPY LG(C)
 #define CPASTE LG(V)
 //undo redo
-#define UNDO LG(Z)
-#define REDO LG(LS(Z))
+#define CUNDO LG(Z)
+#define CREDO LG(LS(Z))
 // 4 nav:
 // back, forward
 #define BCK LG(LBKT)
@@ -106,7 +106,7 @@ Layers are changing through 0 layer. 0 layer as a base layer.
 			quick_tap_ms = <0>;
 			flavor = "tap-preferred";
 			bindings = <&sk>, <&kp>;
-		}
+		};
 
 		ltms: layer-tap-mod-sticky {
 			compatible = "zmk,behavior-hold-tap";
@@ -162,7 +162,7 @@ Layers are changing through 0 layer. 0 layer as a base layer.
 			bindings = <
 				&gresc   		&kp Q &kp W &kp E &kp R 				&kp T           		                        		     				&kp Y &kp U  			&kp I			&kp O		&kp P   				&kp SQT
 				&kp LBKT 		&kp A &kp S &hm LALT D &hm LCMD F 	&kp G       		                        		          			&kp H &hm RCMD J	&hm RALT K			&kp L		&mt COLON SEMI	&kp RBKT
-				&kp TAB   	&mt UNDO Z &kp X &kp C &kp V 				&kp B 			&kp C_VOL_DN	&kp C_VOL_UP  	&kp INS 	&kp DEL		&kp N &kp M  			&kp COMMA &kp DOT &hm UNDERSCORE MINUS				&kp GRAVE
+				&kp TAB   	&mt CUNDO Z &kp X &kp C &kp V 				&kp B 			&kp C_VOL_DN	&kp C_VOL_UP  	&kp INS 	&kp DEL		&kp N &kp M  			&kp COMMA &kp DOT &hm UNDERSCORE MINUS				&kp GRAVE
 									&mt LCTRL KP_COMMA &tms LSHFT EQUAL &mt MEH SPACE	&kp RET		&lparlt				&rpargt		&kp BSPC	&sl 1	&lh 2 QMARK &mt LS(7) KP_DOT
 			>;
 		};
@@ -176,7 +176,7 @@ Layers are changing through 0 layer. 0 layer as a base layer.
 			bindings = <
 				&trans	&kp CARET	&kp HASH  &kp BSLH			&kp PLUS 				&kp STAR    	                							&mt CPASTE CCOPY 	&kp INDL	&kp INDR	&kp SELA							&kp FND	&trans
 				&trans	&kp AMPS	&kp DLLR 	&kp LALT AT 				&hm LCMD EXCL 	&kp FSLH    	                  						&hm LG(LEFT) LEFT	&kp DOWN	&kp UP		&hm LG(RIGHT) RIGHT	&to 3	&trans
-				&trans	&kp UNDO	&kp REDO  &kp CCOPY	&caps_word 		&kp C_PP		&trans	&trans	&trans	&trans 	&mkp LCLK					&kp PDKT 	&kp NDKT	&kp KP_DOT							&trans	&trans
+				&trans	&kp CUNDO	&kp CREDO  &kp CCOPY	&caps_word 		&kp C_PP		&trans	&trans	&trans	&trans 	&mkp LCLK					&kp PDKT 	&kp NDKT	&kp KP_DOT							&trans	&trans
 																&mt LCTRL KP_COMMA 		&tms LSHFT EQUAL  &to 0 	&trans 	&trans  &trans	&trans	&to 2	&mt RALT QMARK	&trans
 			>;
 		};
@@ -204,7 +204,7 @@ Layers are changing through 0 layer. 0 layer as a base layer.
 			bindings = <
 				&trans	&kp F12	&mwh SCROLL_LEFT	&mmv MOVE_UP		&mwh SCROLL_RIGHT	&kp DEL                    							&mt CPASTE CCOPY 	&kp PTAB	&kp NTAB	&trans	&trans	&bt BT_NXT
 				&kp BCK	&mkp RCLK	&mmv MOVE_LEFT 		&mmv MOVE_DOWN 	&mmv MOVE_RIGHT 	&kp LSHFT                     							&hm LG(LEFT) LEFT	&kp DOWN	&kp UP		&hm LG(RIGHT) RIGHT	&trans	&bt BT_SEL 0
-				&trans	&kp UNDO	&kp REDO  				&mwh SCROLL_UP 	&mwh SCROLL_DOWN	&trans		&trans	&trans	&&out OUT_TOG	&trans 	&mkp LCLK					&kp PDKT 	&kp NDKT	&kp PSEL		&kp NSEL	&bt BT_CLR
+				&trans	&kp CUNDO	&kp CREDO  				&mwh SCROLL_UP 	&mwh SCROLL_DOWN	&trans		&trans	&trans	&&out OUT_TOG	&trans 	&mkp LCLK					&kp PDKT 	&kp NDKT	&kp PSEL		&kp NSEL	&bt BT_CLR
 																									&kp LCTRL  &kp LALT   &ltms LCMD 0		&trans 	&trans  &trans	&trans	&ltms RCMD 1	&kp RALT		&kp RCTRL
 			>;
 		};
