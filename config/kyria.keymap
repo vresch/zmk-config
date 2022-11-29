@@ -163,7 +163,7 @@ Layers are changing through 0 layer. 0 layer as a base layer.
 				&gresc   		&kp Q &kp W &kp E &kp R 				&kp T           		                        		     				&kp Y &kp U  			&kp I			&kp O		&kp P   				&kp SQT
 				&kp LBKT 		&kp A &kp S &hm LALT D &hm LCMD F 	&kp G       		                        		          			&kp H &hm RCMD J	&hm RALT K			&kp L		&mt COLON SEMI	&kp RBKT
 				&kp TAB   	&mt CUNDO Z &kp X &kp C &kp V 				&kp B 			&kp C_VOL_DN	&kp C_VOL_UP  	&kp INS 	&kp DEL		&kp N &kp M  			&kp COMMA &kp DOT &hm UNDERSCORE MINUS				&kp GRAVE
-									&mt LCTRL KP_COMMA &tms LSHFT EQUAL &mt MEH SPACE	&kp RET		&lparlt				&rpargt		&kp BSPC	&sl 1	&lh 2 QMARK &mt LS(N7) KP_DOT
+									&mt LCTRL KP_COMMA &tms LSHFT EQUAL &mt MEH SPACE	&kp RET		&lparlt				&rpargt		&kp BSPC	&sl 1	&lh 2 QMARK &mt AMPS KP_DOT
 			>;
 		};
 
