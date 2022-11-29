@@ -125,14 +125,6 @@ Layers are changing through 0 layer. 0 layer as a base layer.
 			bindings = <&mo>, <&kp>;
 		};
 
-		gresc: grave-escape {
-			compatible = "zmk,behavior-mod-morph";
-			label = "GRAVE_ESCAPE";
-			#binding-cells = <0>;
-			bindings = <&kp ESC>, <&kp GRAVE>;
-			mods = <(MOD_LGUI|MOD_LSFT|MOD_RGUI|MOD_RSFT)>;
-		};
-
 		lparlt: left-parenthesis-less-than {
 			compatible = "zmk,behavior-mod-morph";
 			label = "LPAR_LESS";
