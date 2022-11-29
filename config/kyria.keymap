@@ -157,13 +157,13 @@ Layers are changing through 0 layer. 0 layer as a base layer.
 			// ---------------------------------------------------------------------------------------------------------------------------------
 			// | Esc/` |  Q  |  W  |  E   |  R   |  T    |                                          |  Y    |  U    |  I    |  O   |   P   | '/"  |
 			// | [/{   |  A  |  S  | D/Alt| F/Cmd|  G    |                                          |  H    | J/Cmd | K/Alt |  L   |  ;/:  | ]/}  |
-			// | Tab   |UND/Z|  X  |  C   |  V   |  B    |  Vol-   |  Vol+   |  |   Ins   |  Del    |  N    |  M    |  ,    |  .   |  -/_  | `/~  |
+			// | Tab   |Z/UND|  X  |  C   |  V   |  B    |  Vol-   |  Vol+   |  |   Ins   |  Del    |  N    |  M    |  ,    |  .   |  -/_  | `/~  |
 			//                     |,/Ctr	|=+/Shf|Spc/Meh|  Ret    |  (/<    |  |   )/>   |  Bsp    |  L1   | ?/L2  |  ./&  |
 			bindings = <
-				&gresc   		&kp Q &kp W &kp E &kp R 				&kp T           		                        		     				&kp Y &kp U  			&kp I			&kp O		&kp P   				&kp SQT
-				&kp LBKT 		&kp A &kp S &hm LALT D &hm LCMD F 	&kp G       		                        		          			&kp H &hm RCMD J	&hm RALT K			&kp L		&mt COLON SEMI	&kp RBKT
-				&kp TAB   	&mt CUNDO Z &kp X &kp C &kp V 				&kp B 			&kp C_VOL_DN	&kp C_VOL_UP  	&kp INS 	&kp DEL		&kp N &kp M  			&kp COMMA &kp DOT &hm UNDERSCORE MINUS				&kp GRAVE
-									&mt LCTRL KP_COMMA &tms LSHFT EQUAL &mt MEH SPACE	&kp RET		&lparlt				&rpargt		&kp BSPC	&sl 1	&lh 2 QMARK &mt AMPS KP_DOT
+				&gresc   	&kp Q 			&kp W &kp E				&kp R				&kp T           		                        		    &kp Y &kp U  			&kp I				&kp O		&kp P   							&kp SQT
+				&kp LBKT	&kp A 			&kp S	&hm LALT D	&hm LCMD F 	&kp G       		                        		        &kp H &hm RCMD J	&hm RALT K	&kp L		&mt COLON SEMI				&kp RBKT
+				&kp TAB   &mt CUNDO Z &kp X &kp C 			&kp V 			&kp B	&kp C_VOL_DN	&kp C_VOL_UP  &kp INS	&kp DEL		&kp N &kp M  			&kp COMMA 	&kp DOT &hm UNDERSCORE MINUS	&kp GRAVE
+								&mt LCTRL KP_COMMA &tms LSHFT EQUAL &mt MEH SPACE	&kp RET				&lparlt				&rpargt	&kp BSPC	&sl 1	&lh 2 QMARK &mt AMPS KP_DOT
 			>;
 		};
 
@@ -174,10 +174,10 @@ Layers are changing through 0 layer. 0 layer as a base layer.
 			// | --- 	| UND | RED | CPY  |CAPSW |  Ply  |   ---   |  ---    |  |   ---   |  ---    | LClk  | Dkt- |  Dkt+ |  .   |  -/_  | ---  |
 			//                    |,/Ctr |=/Shf |  L0   |   ---   |  ---    |  |   ---   |  ---    | L2    |?/Alt |  ./&  |
 			bindings = <
-				&trans	&kp CARET	&kp HASH  &kp BSLH			&kp PLUS 				&kp STAR    	                							&mt CPASTE CCOPY 	&kp INDL	&kp INDR	&kp SELA							&kp FND	&trans
-				&trans	&kp AMPS	&kp DLLR 	&kp LALT AT 				&hm LCMD EXCL 	&kp FSLH    	                  						&hm LG(LEFT) LEFT	&kp DOWN	&kp UP		&hm LG(RIGHT) RIGHT	&to 3	&trans
-				&trans	&kp CUNDO	&kp CREDO  &kp CCOPY	&caps_word 		&kp C_PP		&trans	&trans	&trans	&trans 	&mkp LCLK					&kp PDKT 	&kp NDKT	&kp KP_DOT							&trans	&trans
-																&mt LCTRL KP_COMMA 		&tms LSHFT EQUAL  &to 0 	&trans 	&trans  &trans	&trans	&to 2	&mt RALT QMARK	&trans
+				&trans	&kp CARET	&kp HASH  &kp BSLH		&kp PLUS 			&kp STAR    	                						&mt CPASTE CCOPY 	&kp INDL	&kp INDR	&kp SELA						&kp FND	&trans
+				&trans	&kp AMPS	&kp DLLR 	&kp LALT AT	&hm LCMD EXCL	&kp FSLH    	                  					&hm LG(LEFT) LEFT	&kp DOWN	&kp UP		&hm LG(RIGHT) RIGHT	&to 3		&trans
+				&trans	&kp CUNDO	&kp CREDO	&kp CCOPY		&caps_word 		&kp C_PP	&trans	&trans	&trans	&trans 	&mkp LCLK					&kp PDKT 	&kp NDKT	&kp KP_DOT					&trans	&trans
+												&mt LCTRL KP_COMMA 		&tms LSHFT EQUAL  &to 0 	&trans 	&trans  &trans	&trans	&to 2	&mt RALT QMARK	&trans
 			>;
 		};
 
@@ -202,17 +202,17 @@ Layers are changing through 0 layer. 0 layer as a base layer.
 			// | --- 	| UND | RED | ScrUp| ScrDn| ---   |   ---   |  ---    |  |   Out   |  ---    | LClk  | Dkt- |  Dkt+ | Sel- | Sel+  | /Ble |
 			//                    | Ctr  | Alt  |L0/Cmd |   ---   |  ---    |  |   ---   |  ---    | L1/Cmd| Alt  |  Ctr  |
 			bindings = <
-				&trans	&kp F12	&mwh SCROLL_LEFT	&mmv MOVE_UP		&mwh SCROLL_RIGHT	&kp DEL                    							&mt CPASTE CCOPY 	&kp PTAB	&kp NTAB	&trans	&trans	&bt BT_NXT
-				&kp BCK	&mkp RCLK	&mmv MOVE_LEFT 		&mmv MOVE_DOWN 	&mmv MOVE_RIGHT 	&kp LSHFT                     							&hm LG(LEFT) LEFT	&kp DOWN	&kp UP		&hm LG(RIGHT) RIGHT	&trans	&bt BT_SEL 0
-				&trans	&kp CUNDO	&kp CREDO  				&mwh SCROLL_UP 	&mwh SCROLL_DOWN	&trans		&trans	&trans	&&out OUT_TOG	&trans 	&mkp LCLK					&kp PDKT 	&kp NDKT	&kp PSEL		&kp NSEL	&bt BT_CLR
-																									&kp LCTRL  &kp LALT   &ltms LCMD 0		&trans 	&trans  &trans	&trans	&ltms RCMD 1	&kp RALT		&kp RCTRL
+				&trans	&kp F12		&mwh SCROLL_LEFT	&mmv MOVE_UP		&mwh SCROLL_RIGHT	&kp DEL                    											&mt CPASTE CCOPY 	&kp PTAB	&kp NTAB	&trans							&trans		&bt BT_NXT
+				&kp BCK	&mkp RCLK	&mmv MOVE_LEFT 		&mmv MOVE_DOWN 	&mmv MOVE_RIGHT 	&kp LSHFT                     									&hm LG(LEFT) LEFT	&kp DOWN	&kp UP		&hm LG(RIGHT) RIGHT	&trans		&bt BT_SEL 0
+				&trans	&kp CUNDO	&kp CREDO  				&mwh SCROLL_UP 	&mwh SCROLL_DOWN	&trans		&trans	&trans	&out OUT_TOG	&trans 	&mkp LCLK					&kp PDKT 	&kp NDKT	&kp PSEL						&kp NSEL	&bt BT_CLR
+																									&kp LCTRL  &kp LALT   &ltms LCMD 0		&trans 	&trans  &trans				&trans	&ltms RCMD 1	&kp RALT		&kp RCTRL
 			>;
 		};
 
 			// ua-ru_layer
 			// ---------------------------------------------------------------------------------------------------------------------------------
 			// | Esc/ґ |  Й  |  Ц  |  У   |  К   |  Е/Ё  |                                          |  Н    |  Г    |  Ш    |  Щ   |   З   | Є/Э  |
-			// |   Х   |  Ф  | І/Ы |  В   |  А   |  П    |                                          |  Р    | О     |  Л    |  Д   |   Ж   | Ї/Ъ  |
+			// |   Х   |  Ф  | І/Ы |  В   |  А   |  П    |                                          |  Р    |  О    |  Л    |  Д   |   Ж   | Ї/Ъ  |
 			// | Tab   |  Я  |  Ч  |  С   |  М   |  И    |  ---    |  CAPS   |  |   Ins   |  Del    |  Т    |  Ь    |  Б    |  Ю   |  -/_  | Ґ/[ 	|
 			//                     |,/Ctr	|  =+  |  Spc  |  Ret    |  (/<    |  |   )/>   |  Bsp    |  L1   | ,/L2  |  ./?  |
 
