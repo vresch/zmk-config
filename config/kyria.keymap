@@ -48,8 +48,8 @@ Layers are changing through 0 layer. 0 layer as a base layer.
 #define NWIN LG(TAB)
 #define PSEL LS(TAB)
 #define NSEL TAB
-// 2 combo: MEH = C-A-S (CMD-ALT-SHFT)
-#define MEH LC(LA(LS))
+// 2 combo: MEH = C-A-S (CTR-ALT-SHFT)
+#define MEH LC(LS(LALT))
 // 3 text edit:
 // indent
 #define INDL LG(LBKT)
@@ -159,9 +159,9 @@ Layers are changing through 0 layer. 0 layer as a base layer.
 			// | Tab   |Z/UND|  X  |  C   |  V   |  B    |  Vol-   |  Vol+   |  |   Ins   |  Del    |  N    |  M    |  ,    |  .   |  -/_  | `/~  |
 			//                     |,/Ctr	|=+/Shf|Spc/Meh|  Ret    |  (/<    |  |   )/>   |  Bsp    |  L1   | ?/L2  |  ./&  |
 			bindings = <
-				&gresc   	&kp Q 			&kp W &kp E				&kp R				&kp T           		                        		    &kp Y &kp U  			&kp I				&kp O		&kp P   							&kp SQT
-				&kp LBKT	&kp A 			&kp S	&hm LALT D	&hm LCMD F 	&kp G       		                        		        &kp H &hm RCMD J	&hm RALT K	&kp L		&mt COLON SEMI				&kp RBKT
-				&kp TAB   &mt CUNDO Z &kp X &kp C 			&kp V 			&kp B	&kp C_VOL_DN	&kp C_VOL_UP  &kp INS	&kp DEL		&kp N &kp M  			&kp COMMA 	&kp DOT &hm UNDERSCORE MINUS	&kp GRAVE
+				&gresc   	&kp Q 			&kp W &kp E				&kp R				&kp T           		                        		    &kp Y &kp U  			&kp I				&kp O		&kp P   				&kp SQT
+				&kp LBKT	&kp A 			&kp S	&hm LALT D	&hm LCMD F 	&kp G       		                        		        &kp H &hm RCMD J	&hm RALT K	&kp L		&mt COLON SEMI	&kp RBKT
+				&kp TAB   &mt CUNDO Z &kp X &kp C 			&kp V 			&kp B	&kp C_VOL_DN	&kp C_VOL_UP  &kp INS	&kp DEL		&kp N &kp M  			&kp COMMA 	&kp DOT &hm UNDER MINUS	&kp GRAVE
 								&mt LCTRL KP_COMMA &tms LSHFT EQUAL &mt MEH SPACE	&kp RET				&lparlt				&rpargt	&kp BSPC	&sl 1	&lh 2 QMARK &mt AMPS KP_DOT
 			>;
 		};
@@ -189,7 +189,7 @@ Layers are changing through 0 layer. 0 layer as a base layer.
 			bindings = <
 				&trans 	&kp F12	&kp N7	&kp N8 &kp N9 &kp PIPE                    									&trans 	&trans	&trans	&trans	&trans	&trans
 				&trans	&kp F11	&kp N4	&kp N5 &kp N6 &hm LSHFT N0                      						&trans	&trans	&trans	&trans	&trans	&trans
-				&trans	&kp F10	&kp N1	&kp N2 &kp N3 &kp MINUS			&trans	&trans	&trans	&trans 	&trans	&trans 	&trans	&trans	&trans	&trans	
+				&trans	&kp F10	&kp N1	&kp N2 &kp N3 &kp MINUS			&trans	&trans	&trans	&trans 	&trans	&trans 	&trans	&trans	&trans	&trans
 													&kp LCTRL  &kp LALT &ltms LCMD 0	&trans 	&trans  &trans	&trans	&ltms RCMD 1	&kp RALT	&kp RCTRL
 			>;
 		};
