@@ -67,10 +67,9 @@ Layers are changing through 0 layer. 0 layer as a base layer.
 // back, forward
 #define BCK LG(LBKT)
 #define FWD LG(RBKT)
-// hotkeys
-#define FND LG(F) // find
-#define SELA RG(A) // select all
-// todo: F5(reload/debug)?
+// hotkeys: find, select all, F5 refresh/debug?
+#define FND LG(F)
+#define SELA RG(A)
 
 &sl {
 	release-after-ms = <1000>;
