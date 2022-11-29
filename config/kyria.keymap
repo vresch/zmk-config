@@ -46,8 +46,8 @@ Layers are changing through 0 layer. 0 layer as a base layer.
 #define NTAB LC(TAB)
 #define PWIN LG(LS(TAB))
 #define NWIN LG(TAB)
-// #define PSEL LS(TAB)
-// #define NSEL TAB
+#define PSEL LS(TAB)
+#define NSEL TAB
 // 2 combo: MEH = C-A-S (CMD-ALT-SHFT)
 #define MEH LC(LA(LS))
 // 3 text edit:
@@ -188,7 +188,7 @@ Layers are changing through 0 layer. 0 layer as a base layer.
 			//                    | Ctr  | Alt  |L0/Cmd |   ---   |  ---    |  |   ---   |  ---    |L1/Cmd | Alt  |  Ctr  |
 			bindings = <
 				&trans 	&kp F12	&kp N7	&kp N8 &kp N9 &kp PIPE                    									&trans 	&trans	&trans	&trans	&trans	&trans
-				&trans &kp F11	&kp N4	&kp N5 &hm N6 &kp LSHFT N0                      						&trans	&trans	&trans	&trans	&trans	&trans
+				&trans	&kp F11	&kp N4	&kp N5 &kp N6 &hm LSHFT N0                      						&trans	&trans	&trans	&trans	&trans	&trans
 				&trans	&kp F10	&kp N1	&kp N2 &kp N3 &kp MINUS			&trans	&trans	&trans	&trans 	&trans	&trans 	&trans	&trans	&trans	&trans	
 													&kp LCTRL  &kp LALT &ltms LCMD 0	&trans 	&trans  &trans	&trans	&ltms RCMD 1	&kp RALT	&kp RCTRL
 			>;
@@ -203,7 +203,7 @@ Layers are changing through 0 layer. 0 layer as a base layer.
 			bindings = <
 				&trans	&kp F12		&mwh SCROLL_LEFT	&mmv MOVE_UP		&mwh SCROLL_RIGHT	&kp DEL                    											&mt CPASTE CCOPY 	&kp PTAB	&kp NTAB	&trans							&trans		&bt BT_NXT
 				&kp BCK	&mkp RCLK	&mmv MOVE_LEFT 		&mmv MOVE_DOWN 	&mmv MOVE_RIGHT 	&kp LSHFT                     									&hm LG(LEFT) LEFT	&kp DOWN	&kp UP		&hm LG(RIGHT) RIGHT	&trans		&bt BT_SEL 0
-				&trans	&kp CUNDO	&kp CREDO  				&mwh SCROLL_UP 	&mwh SCROLL_DOWN	&trans		&trans	&trans	&out OUT_TOG	&trans 	&mkp LCLK					&kp PDKT 	&kp NDKT	&kp LS(TAB)					&kp TAB	&bt BT_CLR
+				&trans	&kp CUNDO	&kp CREDO  				&mwh SCROLL_UP 	&mwh SCROLL_DOWN	&trans		&trans	&trans	&out OUT_TOG	&trans 	&mkp LCLK					&kp PDKT 	&kp NDKT	&kp PSEL						&kp NSEL	&bt BT_CLR
 																									&kp LCTRL  &kp LALT   &ltms LCMD 0		&trans 	&trans  &trans				&trans	&ltms RCMD 1	&kp RALT		&kp RCTRL
 			>;
 		};
