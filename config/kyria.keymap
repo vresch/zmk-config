@@ -174,7 +174,7 @@ Layers are changing through 0 layer. 0 layer as a base layer.
 			//                    |,/Ctr |=/Shf |  L0   |   ---   |  ---    |  |   ---   |  ---    | L2    |?/Alt |  ./&  |
 			bindings = <
 				&trans	&kp CARET	&kp HASH  &kp BSLH		&kp PLUS 			&kp STAR    	                						&mt CPASTE CCOPY 	&kp INDL	&kp INDR	&kp SELA						&kp FND	&trans
-				&trans	&kp AMPS	&kp DLLR 	&kp LALT AT	&hm LCMD EXCL	&kp FSLH    	                  					&hm LG(LEFT) LEFT	&kp DOWN	&kp UP		&hm LG(RIGHT) RIGHT	&to 3		&trans
+				&trans	&kp AMPS	&kp DLLR 	&hm LALT AT	&hm LCMD EXCL	&kp FSLH    	                  					&hm LG(LEFT) LEFT	&kp DOWN	&kp UP		&hm LG(RIGHT) RIGHT	&to 3		&trans
 				&trans	&kp CUNDO	&kp CREDO	&kp CCOPY		&caps_word 		&kp C_PP	&trans	&trans	&trans	&trans 	&mkp LCLK					&kp PDKT 	&kp NDKT	&kp KP_DOT					&trans	&trans
 												&mt LCTRL KP_COMMA 		&tms LSHFT EQUAL  &to 0 	&trans 	&trans  &trans	&trans	&to 2	&mt RALT QMARK	&trans
 			>;
