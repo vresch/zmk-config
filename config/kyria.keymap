@@ -71,11 +71,6 @@ Layers are changing through 0 layer. 0 layer as a base layer.
 #define FND LG(F)
 #define SELA LG(A)
 
-&gresc {
-	mods = <(MOD_LCTL|MOD_RCTL|MOD_LGUI|MOD_RGUI|MOD_LSFT|MOD_RSFT)>;
-	keep-mods = <(MOD_LCTL|MOD_RCTL)>;
-};
-
 &sl {
 	release-after-ms = <1000>;
 };
@@ -130,6 +125,15 @@ Layers are changing through 0 layer. 0 layer as a base layer.
 			bindings = <&mo>, <&sl>;
 		};
 
+		graesc: grave-esc {
+			compatible = "zmk,behavior-mod-morph";
+			label = "GRAVE_ESC";
+			#binding-cells = <0>;
+			bindings = <&kp ESC>, <&kp GRAVE>;
+			mods = <(MOD_LCTL|MOD_RCTL|MOD_LGUI|MOD_RGUI|MOD_LSFT|MOD_RSFT)>;
+			keep-mods = <(MOD_LCTL|MOD_RCTL)>;
+		};
+
 		bspcdel: backspace-delete {
 			compatible = "zmk,behavior-mod-morph";
 			label = "BACKSPACE_DELETE";
@@ -164,7 +168,7 @@ Layers are changing through 0 layer. 0 layer as a base layer.
 			// | Tab   |Z/UND|  X  |  C   |  V   |  B    |  Vol-   |  Vol+   |  |   Ins   |  Del    |  N    |  M    |  ,    |  .   |  -/_  | `/~  |
 			//                     |,/Ctr	|=+/Shf|Spc/Meh|  Ret    |  (/<    |  |   )/>   | Bsp/Del | L1/L2 | ?/Shf |  ./&  |
 			bindings = <
-				&gresc   	&kp Q 			&kp W &kp E				&kp R				&kp T           		                        		    &kp Y &kp U  			&kp I				&kp O		&kp P   				&kp SQT
+				&graesc   &kp Q 			&kp W &kp E				&kp R				&kp T           		                        		    &kp Y &kp U  			&kp I				&kp O		&kp P   				&kp SQT
 				&kp LBKT	&kp A 			&kp S	&hm LALT D	&hm LCMD F 	&kp G       		                        		        &kp H &hm RCMD J	&hm RALT K	&kp L		&mt COLON SEMI	&kp RBKT
 				&kp TAB   &mt CUNDO Z &kp X &kp C 			&kp V 			&kp B	&kp C_VOL_DN	&kp C_VOL_UP  &kp INS	&kp DEL		&kp N &kp M  			&kp COMMA 	&kp DOT &hm UNDER MINUS	&kp GRAVE
 									&mt LCTRL COMMA &tms LSHFT EQUAL &mt MEH SPACE	&kp RET				&lparlt				&rpargt	&bspcdel	&mlsl 2 1	&mt RSHFT QMARK &mt AMPS KP_DOT
