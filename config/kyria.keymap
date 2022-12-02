@@ -72,6 +72,7 @@ Layers are changing through 0 layer. 0 layer as a base layer.
 #define SELA LG(A)
 
 &gresc {
+	mods = <(MOD_LCTL|MOD_RCTL|MOD_LGUI|MOD_RGUI|MOD_LSFT|MOD_RSFT)>;
 	keep-mods = <(MOD_LCTL|MOD_RCTL)>;
 };
 
@@ -86,7 +87,7 @@ Layers are changing through 0 layer. 0 layer as a base layer.
 
 &mmv {
    time-to-max-speed-ms = <340>;
-   acceleration-exponent=<2>;
+   acceleration-exponent = <2>;
 };
 
 / {
