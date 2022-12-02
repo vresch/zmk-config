@@ -129,7 +129,7 @@ Layers are changing through 0 layer. 0 layer as a base layer.
 			bindings = <&mo>, <&sl>;
 		};
 
-		bspc-del: backspace-delete {
+		bspcdel: backspace-delete {
 			compatible = "zmk,behavior-mod-morph";
 			label = "BACKSPACE_DELETE";
 			#binding-cells = <0>;
@@ -166,7 +166,7 @@ Layers are changing through 0 layer. 0 layer as a base layer.
 				&gresc   	&kp Q 			&kp W &kp E				&kp R				&kp T           		                        		    &kp Y &kp U  			&kp I				&kp O		&kp P   				&kp SQT
 				&kp LBKT	&kp A 			&kp S	&hm LALT D	&hm LCMD F 	&kp G       		                        		        &kp H &hm RCMD J	&hm RALT K	&kp L		&mt COLON SEMI	&kp RBKT
 				&kp TAB   &mt CUNDO Z &kp X &kp C 			&kp V 			&kp B	&kp C_VOL_DN	&kp C_VOL_UP  &kp INS	&kp DEL		&kp N &kp M  			&kp COMMA 	&kp DOT &hm UNDER MINUS	&kp GRAVE
-									&mt LCTRL COMMA &tms LSHFT EQUAL &mt MEH SPACE	&kp RET				&lparlt				&rpargt	&bspc-del	&mlsl 2 1	&mt RSHFT QMARK &mt AMPS KP_DOT
+									&mt LCTRL COMMA &tms LSHFT EQUAL &mt MEH SPACE	&kp RET				&lparlt				&rpargt	&bspcdel	&mlsl 2 1	&mt RSHFT QMARK &mt AMPS KP_DOT
 			>;
 		};
 
