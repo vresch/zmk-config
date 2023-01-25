@@ -161,9 +161,9 @@ Layers are changing through 0 layer. 0 layer as a base layer.
 		};
 		scrlw: = scrl-w {
 			compatible = "zmk,behavior-mod-morph";
-			label = "RPAR_GREAT";
+			label = "SCROLL_LEFT_CLOSE_TAB";
 			#binding-cells = <0>;
-			bindings = <&mwh SCROLL_LEFT>, <&kp CLSW>;
+			bindings = <&mwh SCROLL_LEFT>, <&kp CLST>;
 			mods = <(MOD_LCTL|MOD_RCTL)>;
 		};
 	};
