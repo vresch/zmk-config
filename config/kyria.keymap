@@ -70,6 +70,9 @@ Layers are changing through 0 layer. 0 layer as a base layer.
 // hotkeys: find, select all, F5 refresh/debug?
 #define FND LG(F)
 #define SELA LG(A)
+#define NEWT LG(T)
+#define CLST LG(W)
+#define CLSW LG(Q)
 
 &sl {
 	release-after-ms = <1000>;
@@ -129,7 +132,7 @@ Layers are changing through 0 layer. 0 layer as a base layer.
 		// 	compatible = "zmk,behavior-mod-morph";
 		// 	label = "GRAVE_ESC";
 		// 	#binding-cells = <0>;
-		// 	bindings = <&kp ESC>, <&kp GRAVE>;
+		// 	bindings = <&kp ESC>, <&kp RC(GRAVE)>;
 		// 	mods = <(MOD_LCTL|MOD_RCTL|MOD_LGUI|MOD_RGUI|MOD_LSFT|MOD_RSFT)>;
 		// 	keep-mods = <(MOD_LCTL|MOD_RCTL)>;
 		// };
@@ -156,6 +159,13 @@ Layers are changing through 0 layer. 0 layer as a base layer.
 			bindings = <&kp RPAR>, <&kp GT>;
 			mods = <(MOD_LSFT|MOD_RSFT)>;
 		};
+		scrlw: = scrl-w {
+			compatible = "zmk,behavior-mod-morph";
+			label = "RPAR_GREAT";
+			#binding-cells = <0>;
+			bindings = <&mwh SCROLL_LEFT>, <&kp CLSW>;
+			mods = <(MOD_LCTL|MOD_RCTL)>;
+		};
 	};
 
 	keymap {
@@ -168,7 +178,7 @@ Layers are changing through 0 layer. 0 layer as a base layer.
 			// | Tab   |Z/UND|  X  |  C   |  V   |  B    |  Vol-   |  Vol+   |  |   Ins   |  Del    |  N    |  M    |  ,    |  .   |  -/_  | `/~  |
 			//                     |,/Ctr	|=+/Shf|Spc/Meh|  Ret    |  (/<    |  |   )/>   | Bsp/Del | L1/L2 | ?/Shf |  ./&  |
 			bindings = <
-				&gresc   &kp Q 			&kp W &kp E				&kp R				&kp T           		                        		    &kp Y &kp U  			&kp I				&kp O		&kp P   				&kp SQT
+				&gresc		&kp Q 			&kp W &kp E				&kp R				&kp T           		                        		    &kp Y &kp U  			&kp I				&kp O		&kp P   				&kp SQT
 				&kp LBKT	&kp A 			&kp S	&hm LALT D	&hm LCMD F 	&kp G       		                        		        &kp H &hm RCMD J	&hm RALT K	&kp L		&mt COLON SEMI	&kp RBKT
 				&kp TAB   &mt CUNDO Z &kp X &kp C 			&kp V 			&kp B	&kp C_VOL_DN	&kp C_VOL_UP  &kp INS	&kp DEL		&kp N &kp M  			&kp COMMA 	&kp DOT &hm UNDER MINUS	&kp GRAVE
 									&mt LCTRL COMMA &tms LSHFT EQUAL &mt MEH SPACE	&kp RET				&lparlt				&rpargt	&bspcdel	&mlsl 2 1	&mt RSHFT QMARK &mt AMPS KP_DOT
@@ -205,12 +215,12 @@ Layers are changing through 0 layer. 0 layer as a base layer.
 
 		mouse_nav_layer {
 			// ---------------------------------------------------------------------------------------------------------------------------------
-			// | ---  | F12 | SrlL| MUP  | ScrR | Del   |                                          |CPY/PST| Tab- |  Tab+ | SelA |  Fnd  | Ble+ |
+			// | ---  |ClsW |SrL/W| MUP  | ScrR | NewT  |                                          |CPY/PST| Tab- |  Tab+ | SelA |  Fnd  | Ble+ |
 			// | Back |RClk | ML  | MDN  | MR   | Shf   |                                          | Lf/GL | Down |  Up   | Ri/GR|  ---  | Ble0 |
 			// | --- 	| UND | RED | ScrUp| ScrDn| Ply   |   Vol-  |  Vol+   |  |   Out   |  ---    | LClk  | Dkt- |  Dkt+ | Sel- | Sel+  | /Ble |
 			//                    | Ctr  | Alt  |L0/Cmd |   ---   |  ---    |  |   ---   |  ---    | L1/Cmd| Alt  |  Ctr  |
 			bindings = <
-				&trans	&kp F12		&mwh SCROLL_LEFT	&mmv MOVE_UP		&mwh SCROLL_RIGHT	&kp DEL                    											&mt CPASTE CCOPY 	&kp PTAB	&kp NTAB	&kp SELA						&kp FND		&bt BT_NXT
+				&trans	&kp CLSW	&scrlw						&mmv MOVE_UP		&mwh SCROLL_RIGHT	&kp NEWT	                    									&mt CPASTE CCOPY 	&kp PTAB	&kp NTAB	&kp SELA						&kp FND		&bt BT_NXT
 				&kp BCK	&mkp RCLK	&mmv MOVE_LEFT 		&mmv MOVE_DOWN 	&mmv MOVE_RIGHT 	&kp LSHFT                     									&hm LG(LEFT) LEFT	&kp DOWN	&kp UP		&hm LG(RIGHT) RIGHT	&none			&bt BT_SEL 0
 				&trans	&kp CUNDO	&kp CREDO  				&mwh SCROLL_UP 	&mwh SCROLL_DOWN	&kp C_PP	&trans	&trans	&out OUT_TOG	&trans 	&mkp LCLK					&kp PDKT 	&kp NDKT	&kp PSEL						&kp NSEL	&bt BT_CLR
 																									&kp LCTRL  &kp LALT   &ltms LCMD 0		&trans 	&trans  &trans				&trans	&ltms RCMD 1	&kp RALT		&kp RCTRL
