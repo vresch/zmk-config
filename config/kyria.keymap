@@ -159,7 +159,7 @@ Layers are changing through 0 layer. 0 layer as a base layer.
 			bindings = <&kp RPAR>, <&kp GT>;
 			mods = <(MOD_LSFT|MOD_RSFT)>;
 		};
-		scrlw: = scrl-w {
+		scrlw: scrl-w {
 			compatible = "zmk,behavior-mod-morph";
 			label = "SCROLL_LEFT_CLOSE_TAB";
 			#binding-cells = <0>;
