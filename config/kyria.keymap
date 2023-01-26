@@ -159,13 +159,6 @@ Layers are changing through 0 layer. 0 layer as a base layer.
 			bindings = <&kp RPAR>, <&kp GT>;
 			mods = <(MOD_LSFT|MOD_RSFT)>;
 		};
-		scrlw: scrl-w {
-			compatible = "zmk,behavior-mod-morph";
-			label = "SCROLL_LEFT_CLOSE_TAB";
-			#binding-cells = <0>;
-			bindings = <&mwh SCROLL_LEFT>, <&kp CLST>;
-			mods = <(MOD_LCTL|MOD_RCTL)>;
-		};
 	};
 
 	keymap {
@@ -215,12 +208,12 @@ Layers are changing through 0 layer. 0 layer as a base layer.
 
 		mouse_nav_layer {
 			// ---------------------------------------------------------------------------------------------------------------------------------
-			// | ---  |ClsW |SrL/W| MUP  | ScrR | NewT  |                                          |CPY/PST| Tab- |  Tab+ | SelA |  Fnd  | Ble+ |
+			// | ---  |ClsW | ClsT| MUP  | ScrR | NewT  |                                          |CPY/PST| Tab- |  Tab+ | SelA |  Fnd  | Ble+ |
 			// | Back |RClk | ML  | MDN  | MR   | Shf   |                                          | Lf/GL | Down |  Up   | Ri/GR|  ---  | Ble0 |
 			// | --- 	| UND | RED | ScrUp| ScrDn| Ply   |   Vol-  |  Vol+   |  |   Out   |  ---    | LClk  | Dkt- |  Dkt+ | Sel- | Sel+  | /Ble |
 			//                    | Ctr  | Alt  |L0/Cmd |   ---   |  ---    |  |   ---   |  ---    | L1/Cmd| Alt  |  Ctr  |
 			bindings = <
-				&trans	&kp CLSW	&scrlw						&mmv MOVE_UP		&mwh SCROLL_RIGHT	&kp NEWT	                    									&mt CPASTE CCOPY 	&kp PTAB	&kp NTAB	&kp SELA						&kp FND		&bt BT_NXT
+				&trans	&kp CLSW	&CLST							&mmv MOVE_UP		&mwh SCROLL_RIGHT	&kp NEWT	                    									&mt CPASTE CCOPY 	&kp PTAB	&kp NTAB	&kp SELA						&kp FND		&bt BT_NXT
 				&kp BCK	&mkp RCLK	&mmv MOVE_LEFT 		&mmv MOVE_DOWN 	&mmv MOVE_RIGHT 	&kp LSHFT                     									&hm LG(LEFT) LEFT	&kp DOWN	&kp UP		&hm LG(RIGHT) RIGHT	&none			&bt BT_SEL 0
 				&trans	&kp CUNDO	&kp CREDO  				&mwh SCROLL_UP 	&mwh SCROLL_DOWN	&kp C_PP	&trans	&trans	&out OUT_TOG	&trans 	&mkp LCLK					&kp PDKT 	&kp NDKT	&kp PSEL						&kp NSEL	&bt BT_CLR
 																									&kp LCTRL  &kp LALT   &ltms LCMD 0		&trans 	&trans  &trans				&trans	&ltms RCMD 1	&kp RALT		&kp RCTRL
